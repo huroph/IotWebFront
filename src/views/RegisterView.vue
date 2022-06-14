@@ -1,115 +1,105 @@
 <template>
-<!--      <v-card class="mx-auto"
-              max-width="344"
-              variant="outlined">
-        <v-form
-            ref="form"
-            v-model="valid"
-            lazy-validation
-        >
-          <v-text-field
-              v-model="name"
-              :counter="10"
-              :rules="nameRules"
-              label="Name"
-              required
-          ></v-text-field>
-
-          <v-text-field
-              v-model="email"
-              :rules="emailRules"
-              label="E-mail"
-              required
-          ></v-text-field>
-
-          <v-select
-              v-model="select"
-              :items="items"
-              :rules="[v => !!v || 'Item is required']"
-              label="Item"
-              required
-          ></v-select>
-
-          <v-checkbox
-              v-model="checkbox"
-              :rules="[v => !!v || 'You must agree to continue!']"
-              label="Do you agree?"
-              required
-          ></v-checkbox>
-
-          <v-btn
-              :disabled="!valid"
-              color="success"
-              class="mr-4"
-              @click="validate"
-          >
-            Validate
-          </v-btn>
-
-          <v-btn
-              color="error"
-              class="mr-4"
-              @click="reset"
-          >
-            Reset Form
-          </v-btn>
-
-          <v-btn
-              color="warning"
-              @click="resetValidation"
-          >
-            Reset Validation
-          </v-btn>
-        </v-form>
-      </v-card>-->
   <div class="container">
     <div class="box">
       <form>
-        <span class="text-center">login</span>
-        <div style="display:flex;flex-direction: row">
+        <span class="text-center">INSCRIPTION</span>
+        <div class="row">
           <div class="input-container">
             <input type="text" required=""/>
-            <label>Last Name</label>
+            <label>Nom de famille</label>
           </div>
-          <div class="input-container">
-            <input type="text" required=""/>
-            <label>First Name</label>
+          <div class="input-container" style="margin-left: 5px">
+            <input type="mail" required=""/>
+            <label>Prénom</label>
           </div>
         </div>
 
         <div class="input-container">
-          <input type="mail" required=""/>
+          <input type="text" required=""/>
           <label>Email</label>
         </div>
         <div class="input-container">
-          <input type="phone" required=""/>
+          <input type="text" required=""/>
           <label>Téléphone</label>
         </div>
         <div class="input-container">
-          <input type="password" id="password" (change)="onPasswordChange()"
-          required  pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"/>
+          <input type="text" required=""/>
           <label>Mot de passe</label>
         </div>
         <div class="input-container">
-          <input type="password" id="txtConfirmPassword" (change)="onPasswordChange()" required/>
+          <input type="text" required=""/>
           <label>Confirmez Mot de passe</label>
         </div>
-        <button type="button" class="btn">submit</button>
+        <div class="input-container">
+          <input type="text" required=""/>
+          <label>Code parrainage</label>
+        </div>
+        <div class="bottom-container">
+          <button type="button" class="btn">submit</button>
+          <router-link style="text-decoration: none; color: inherit;" to="/Login">
+            <p style="color: white"> Vous avez deja un compte ?</p>
+          </router-link>
+
+        </div>
+
       </form>
     </div>
   </div>
 
+
 </template>
 
+<script>
+export default {
+  data: () => ({
+    valid: true,
+    name: '',
+    nameRules: [
+      v => !!v || 'Name is required',
+      v => (v && v.length <= 10) || 'Name must be less than 10 characters',
+    ],
+    email: '',
+    emailRules: [
+      v => !!v || 'E-mail is required',
+      v => /.+@.+\..+/.test(v) || 'E-mail must be valid',
+    ],
+    select: null,
+    items: [
+      'Item 1',
+      'Item 2',
+      'Item 3',
+      'Item 4',
+    ],
+    checkbox: false,
+  }),
 
+  methods: {
+    validate () {
+      this.$refs.form.validate()
+    },
+    reset () {
+      this.$refs.form.reset()
+    },
+    resetValidation () {
+      this.$refs.form.resetValidation()
+    },
+  },
+}
+</script>
 
-
-<style>
-@import url('https://fonts.googleapis.com/css?family=Noto+Sans:400,400i,700,700i&subset=greek-ext');
+<style scoped>
+.bottom-container {
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+}
 
 .container{
-
-
   width: 100%;
   background-image: url("../assets/bgUbereat.jpg");
   background-color: #cccccc;
@@ -117,8 +107,6 @@
   background-repeat: no-repeat;
   background-size: cover;
   position: relative;
-
-
 }
 
 
@@ -130,6 +118,12 @@ body{
   background-size: cover;
   min-height:100vh;
   font-family: 'Noto Sans', sans-serif;
+}
+.row{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 }
 .text-center{
   color:#fff;
@@ -147,13 +141,11 @@ body{
   transform: translate(-50%,-50%);
   background-color: rgba(0, 0, 0, 0.89);
   border-radius:30px;
-  padding:70px 70px;
+  padding:70px 50px;
 }
 .input-container{
-
   position:relative;
   margin-bottom:25px;
-  margin-right: 5px;
 }
 .input-container label{
   position:absolute;
@@ -186,7 +178,7 @@ body{
   color: #fff;
   padding:10px 20px;
   text-transform:uppercase;
-  margin-top:50px;
+  margin-bottom: 10px;
   border-radius:30px;
   cursor:pointer;
   position:relative;
@@ -206,4 +198,5 @@ body{
   font-size:12px;
 
 }
+
 </style>
