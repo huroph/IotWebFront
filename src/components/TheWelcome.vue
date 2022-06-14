@@ -1,33 +1,31 @@
-<script setup lang="ts">
-
-</script>
 
 <template>
- <div class="homepage" >
-  <div class="title">
-    <h1>Vos Plats préférés,directement à votre porte</h1>
-    <div class="container">
-      <div class="row">
-        <input class="inputfield" type="text" id="name" name="name" placeholder="Saisissez l’adresse de livraison">
 
-        
-        <router-link to="/restaurants"><button class="btnFindRestaurant" ><a class="textBtn" href="#/RestaurantsList">Trouver un restaurant</a> |</button></router-link>
-        <md-button class="md-primary md-just-icon md-round"><md-icon >favorite</md-icon></md-button>
-
+  <div class="homepage">
+    <div class="title">
+      <h1>Vos Plats préférés,directement à votre porte</h1>
+      <div class="container">
+        <div class="row">
+          <input  type="text" id="name" name="name" placeholder="Saisissez l’adresse de livraison">
+          <router-link to="/restaurants"><button class="btnFindRestaurant"><a class="textBtn"
+                >Trouver un restaurant</a> </button></router-link>
+        </div>
       </div>
     </div>
-  </div>
 
-</div>
+  </div>
 </template>
 <style scoped>
-.row{
+.row {
   display: grid;
-  margin: 50px!important;
+  margin: 50px !important;
   grid-template-rows: auto auto;
   gap: 100px;
 }
+
+
 .homepage {
+
   width: 100%;
   background-image: url("../assets/bgUbereat.jpg");
   background-color: #cccccc;
@@ -35,7 +33,7 @@
   background-repeat: no-repeat;
   background-size: cover;
   position: relative;
- 
+
 }
 
 
@@ -46,26 +44,28 @@ input[type=text] {
   position: absolute;
   width: 313px;
   height: 50px;
-  border-radius: 27px!important;
+  border-radius: 27px !important;
   border: 0;
   align-items: center;
   text-align: center;
 }
 
-.title{
+.title {
   top: 40%;
   left: 1%;
   width: 1000px;
   height: auto;
   position: absolute;
 }
-h1{
+
+h1 {
   font-size: 70px;
   font-family: "Bambou Sans";
   color: #ffffff;
 }
+
 /* Btn Find Restaurant */
-.btnFindRestaurant{
+.btnFindRestaurant {
   cursor: pointer;
   position: absolute;
   width: 177px;
@@ -80,7 +80,7 @@ h1{
 
 
 /* Trouver un restaurant */
-.textBtn{
+.textBtn {
   text-decoration: none;
   font-family: "Bambou Sans";
   font-style: normal;
@@ -94,5 +94,4 @@ h1{
 
 
 }
-
 </style>
