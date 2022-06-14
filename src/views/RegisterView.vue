@@ -101,33 +101,7 @@
 
 </template>
 
-<script lang="ts">
 
-import {defineComponent} from "vue";
-
-
-export default defineComponent({
-  name: 'App',
-  data () {
-    return {
-
-              // All is this method
-              onPasswordChange() {
-            const Password = document.getElementById('password') as HTMLInputElement | null;
-            const ConfirmPassword = document.getElementById('txtConfirmPassword') as HTMLInputElement | null;
-            if (Password != ConfirmPassword) {
-
-          console.log("error");
-        }
-      },
-
-// getting the form control elements
-
-    }
-  },
-})
-
-</script>
 
 
 <style>
