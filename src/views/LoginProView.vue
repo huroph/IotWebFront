@@ -38,7 +38,10 @@
           <input type="text" required=""/>
           <label>SIRET </label>
         </div>
-        <button type="button" class="btn">submit</button>
+        <div class="bottom-container">
+          <button type="button" class="btn">submit</button>
+        </div>
+
 
       </form>
     </div>
@@ -86,7 +89,16 @@ export default {
 </script>
 
 <style scoped>
-@import url('https://fonts.googleapis.com/css?family=Noto+Sans:400,400i,700,700i&subset=greek-ext');
+.bottom-container {
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+}
 
 .container{
   width: 100%;
@@ -172,7 +184,7 @@ body{
   border-radius:30px;
   cursor:pointer;
   position:absolute;
-  left: 35%;
+
 }
 /*.btn:after{
 	content:"";

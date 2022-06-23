@@ -78,8 +78,8 @@
 </style>
 <script>
 
-import ProductItem from "../components/cards/productItem.vue";
-import MenueItems from "../components/cards/MenueItems.vue";
+import ProductItem from "../components/molecules/cards/productItem.vue";
+import MenueItems from "../components/molecules/cards/MenueItems.vue";
 export default {
   components: {MenueItems, ProductItem, }
 }

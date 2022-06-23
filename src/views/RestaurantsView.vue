@@ -1,7 +1,7 @@
 
 <script setup lang="ts">
-import RestoItem from '@/components/cards/RestoItem.vue'
-import productItem from "@/components/cards/productItem.vue";
+import RestoItem from '@/components/molecules/cards/RestoItem.vue'
+import productItem from "@/components/molecules/cards/productItem.vue";
 import categoriesItem from "@/components/categoriesItem.vue";
 
 </script>
@@ -12,6 +12,7 @@ import categoriesItem from "@/components/categoriesItem.vue";
             <categoriesItem />
         </div>
     </div>
+
 
     <div class="containers">
         <div class="grid-container">

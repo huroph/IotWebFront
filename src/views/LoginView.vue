@@ -10,9 +10,12 @@
 
         <div class="input-container">
           <input type="mail" required=""/>
-          <label>Email</label>
+          <label>Mot de passe </label>
         </div>
-        <button type="button" class="btn">submit</button>
+        <div class="bottom-container">
+          <button type="button" class="btn">submit</button>
+        </div>
+
       </form>
     </div>
   </div>
@@ -59,11 +62,9 @@ export default {
 </script>
 
 <style scoped>
-@import url('https://fonts.googleapis.com/css?family=Noto+Sans:400,400i,700,700i&subset=greek-ext');
+
 
 .container{
-
-
   width: 100%;
   background-image: url("../assets/bgUbereat.jpg");
   background-color: #cccccc;
@@ -71,11 +72,7 @@ export default {
   background-repeat: no-repeat;
   background-size: cover;
   position: relative;
-
-
 }
-
-
 body{
   background-image: url("https://images.pexels.com/photos/891252/pexels-photo-891252.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
   background-position: center;
@@ -101,7 +98,7 @@ body{
   transform: translate(-50%,-50%);
   background-color: rgba(0, 0, 0, 0.89);
   border-radius:30px;
-  padding:70px 100px;
+  padding:70px 50px;
 }
 .input-container{
   position:relative;
@@ -143,20 +140,21 @@ body{
   cursor:pointer;
   position:relative;
 }
-/*.btn:after{
-	content:"";
-	position:absolute;
-	background:rgba(0,0,0,0.50);
-	top:0;
-	right:0;
-	width:100%;
-	height:100%;
-}*/
+
 .input-container input:focus ~ label,
 .input-container input:valid ~ label{
   top:-12px;
   font-size:12px;
 
 }
-
+.bottom-container {
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+}
 </style>

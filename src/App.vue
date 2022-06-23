@@ -9,7 +9,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-import CeseatNavbar from '@/components/header/CeseatNavbar.vue'
+import CeseatNavbar from '@/components/organism/header/CeseatNavbar.vue'
 
 export default defineComponent({
   name: 'App',

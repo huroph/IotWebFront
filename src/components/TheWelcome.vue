@@ -9,6 +9,9 @@
           <input  type="text" id="name" name="name" placeholder="Saisissez l’adresse de livraison">
           <router-link to="/restaurants"><button class="btnFindRestaurant"><a class="textBtn"
                 >Trouver un restaurant</a> </button></router-link>
+          <v-img class="img" src="./src/assets/products/burger.png" width="100">
+
+          </v-img>
         </div>
       </div>
     </div>

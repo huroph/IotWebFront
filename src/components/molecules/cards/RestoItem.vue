@@ -98,7 +98,7 @@ export default {
     .top {
       height: 80%;
       width: 100%;
-      background: url(../../assets/McdoBG.jpeg) no-repeat center center;
+      background: url(../../../assets/McdoBG.jpeg) no-repeat center center;
       -webkit-background-size: 100%;
       -moz-background-size: 100%;
       -o-background-size: 100%;
