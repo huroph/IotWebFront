@@ -1,7 +1,6 @@
 <template>
 
   <nav>
-
     <v-app-bar dark>
       <v-app-bar-nav-icon @click="drawer = true"></v-app-bar-nav-icon>
       <router-link style="text-decoration: none; color: inherit;" to="/">
@@ -131,7 +130,6 @@
         
       </v-list>
     </v-navigation-drawer>
-
   </nav>
 
 </template>

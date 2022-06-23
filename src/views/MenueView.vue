@@ -1,49 +1,15 @@
-
-
 <template>
-
   <div class="containers">
     <div class="img-header">
-
     </div>
     <div class="title">
-      <h1 style="font-weight: bold">Mcdonald's</h1>
-      <h3 style="font-weight:normal!important;" >Menu</h3>
-    </div>
-
-
-    <div class="grid-container">
-        <ProductItem/>
-        <ProductItem/>
-        <ProductItem/>
-        <ProductItem/>
-        <ProductItem/>
-        <ProductItem/>
-        <ProductItem/>
-    </div>
-    <div class="title">
-      <h1 style="font-weight: bold">Mcdonald's</h1>
+      <h1 style="font-weight: bold">{{ destination.name }}</h1>
       <h3 style="font-weight:normal!important;" >Menu</h3>
     </div>
     <div class="grid-container">
-      <ProductItem/>
-      <ProductItem/>
-      <ProductItem/>
-      <ProductItem/>
-      <ProductItem/>
-      <ProductItem/>
-      <ProductItem/>
+      <ProductItem :cards="cards"/>
     </div>
-    <div class="grid-container">
-      <ProductItem/>
-      <ProductItem/>
-      <ProductItem/>
-      <ProductItem/>
-      <ProductItem/>
-      <ProductItem/>
-<menue-items/>
     </div>
-  </div>
 </template>
 
 <style lang="scss" scoped>
@@ -80,7 +46,39 @@
 
 import ProductItem from "../components/molecules/cards/productItem.vue";
 import MenueItems from "../components/molecules/cards/MenueItems.vue";
+import sourceData from "@/data.json"
 export default {
-  components: {MenueItems, ProductItem, }
+  components: {MenueItems, ProductItem, },
+  computed:{
+    destinationId(){
+      return this. $route.params.name
+    },
+    destination(){
+      return sourceData.find(destination => destination.name === this.destinationId  )
+    }
+
+  },
+  data(){
+    return{
+      cards:[
+        {
+          title:"Mcdonald's",
+          content:"jaime les frites",
+          price : 9.99,
+        },
+        {
+          title:"mcdo",
+          content:"jaime les frites",
+          price : 9.99,
+        },
+        {
+          title:"mcdo",
+          content:"jaime les frites",
+          price : 9.99,
+        },
+      ]
+    }
+  }
+
 }
 </script>

@@ -58,17 +58,10 @@
 
 <script lang="ts">
 export default {
-  data: () => ({
-    cards: [
-      {
-        title: '280 ORIGINAL',
-        content: 'Pain spécial, steak haché, emmental et cheddar fondus, oignons, tomate, sauce, ketchup.',
-        price: '9.99€',
-        src: './src/assets/products/burger.png',
-        flex: 4
-      },
+  name:"productItem",
+  props:{
+    cards: [],
+  },
 
-    ],
-  }),
 }
 </script>
