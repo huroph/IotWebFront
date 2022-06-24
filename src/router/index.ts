@@ -9,7 +9,7 @@ const router = createRouter({
     {path: '/Restaurants', name: 'RestaurantsView', component: () => import('../views/RestaurantsView.vue')},
     {path: '/Login', name: 'LoginView', component: () => import('../views/LoginView.vue')},
     {path: '/Register', name: 'RegisterView', component: () => import('../views/RegisterView.vue')},
-    {path: '/menu/:name', component: () => import('@/views/MenueView.vue') },
+    {path: '/menu/:restauId', name:'menuByRestauId', component: () => import('@/views/ItemView.vue') },
     {path: '/LoginPro',name: 'LoginProView',component: () => import('../views/LoginProView.vue')},
 
 

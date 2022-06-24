@@ -1,8 +1,7 @@
 <template>
 
-  <div class="wrapper" v-for="item in ItemData" :key="item.name" :itemlist="item">
-    <router-link to="/menu">
-    <div class="container">
+  <div class="wrapper" v-for="item in destination" :key="item.name" :itemlist="item">
+    <div class="container" v-on:click="redirect(item.id)">
       <div class="top"></div>
       <div class="bottom">
         <div class="left">
@@ -22,51 +21,24 @@
         </div>
       </div>
     </div>
-    </router-link>
   </div>
 
 
 
 </template>
 <script>
+ import router from "@/router";
+ import sourceData from "@/data.json"
 
-const ItemData = [
-  {
-    name: 'Mcdonvxcalds',
-    background: 'item2',
-    mark: '4.5',
-    delivery_charges: '4.99'
-  },
-  {
-    name: 'Mcdosfsjalds',
-    background: 'item2',
-    mark: '4.5',
-    delivery_charges: '4.99'
-  },
-  {
-    name: 'Mcdohfsd,hnalds',
-    background: 'item2',
-    mark: '4.5',
-    delivery_charges: '4.99'
-  },
-  {
-    name: 'Mcdonaerglds',
-    background: 'item2',
-    mark: '4.5',
-    delivery_charges: '4.99'
-  },
-  {
-    name: 'Mcdoernalds',
-    background: 'item2',
-    mark: '4.5',
-    delivery_charges: '4.99'
-  },
-
-]
 export default {
-  data() {
-    return {
-      ItemData,
+   computed: {
+     destination(){
+       return sourceData['restaurants'];
+     }
+   },
+  methods: {
+    redirect(restauId) {
+      router.push({name: 'menuByRestauId', params: {restauId:restauId}});
     }
   }
 };
@@ -82,7 +54,7 @@ export default {
   position: relative;
   overflow: hidden;
   border-radius: 10px 10px 10px 10px;
-  box-shadow: 0 ;
+  box-shadow: 0;
   transform: scale(0.95);
   transition: box-shadow 0.5s, transform 0.5s;
 

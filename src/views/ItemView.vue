@@ -4,12 +4,12 @@
     </div>
     <div class="title">
       <h1 style="font-weight: bold">{{ destination.name }}</h1>
-      <h3 style="font-weight:normal!important;" >Menu</h3>
+      <h3 style="font-weight:normal!important;">Menu</h3>
     </div>
     <div class="grid-container">
-      <ProductItem :cards="cards"/>
+      <ProductItem :cards="cardsData"/>
     </div>
-    </div>
+  </div>
 </template>
 
 <style lang="scss" scoped>
@@ -18,14 +18,14 @@
 
   padding: 1em;
   display: flex;
-   justify-content: space-around;
+  justify-content: space-around;
   flex-wrap: wrap;
   flex-direction: row;
   column-count: 4;
 
 }
 
-.img-header{
+.img-header {
   background-image: url("../assets/McdoBG.jpeg");
   width: 100%;
   height: 134px;
@@ -34,7 +34,7 @@
   background-position: center;
 }
 
-.title{
+.title {
   font-family: "Bambou Sans";
   color: black;
   margin-top: 10px;
@@ -47,34 +47,44 @@
 import ProductItem from "../components/molecules/cards/productItem.vue";
 import MenueItems from "../components/molecules/cards/MenueItems.vue";
 import sourceData from "@/data.json"
-export default {
-  components: {MenueItems, ProductItem, },
-  computed:{
-    destinationId(){
-      return this. $route.params.name
-    },
-    destination(){
-      return sourceData.find(destination => destination.name === this.destinationId  )
-    }
 
+export default {
+  components: {ProductItem,},
+  computed: {
+    destinationId() {
+      return parseInt(this.$route.params.restauId)
+    },
+    destination() {
+      return sourceData['restaurants'].find(destination => destination.id === this.destinationId);
+    },
+    cardsData() {
+      const cardData = [];
+      this.cards.forEach((card) => {
+        if (card.restauId === this.destinationId) cardData.push(card);
+      });
+      return cardData
+    }
   },
-  data(){
-    return{
-      cards:[
+  data() {
+    return {
+      cards: [
         {
-          title:"Mcdonald's",
-          content:"jaime les frites",
-          price : 9.99,
+          restauId: 1,
+          title: "Mcdonald's",
+          content: "jaime les frites",
+          price: 9.99,
         },
         {
-          title:"mcdo",
-          content:"jaime les frites",
-          price : 9.99,
+          restauId: 1,
+          title: "mcdo",
+          content: "jaime les frites",
+          price: 9.99,
         },
         {
-          title:"mcdo",
-          content:"jaime les frites",
-          price : 9.99,
+          restauId: 1,
+          title: "mcdo",
+          content: "jaime les frites",
+          price: 9.99,
         },
       ]
     }

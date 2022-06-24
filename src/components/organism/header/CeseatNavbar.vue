@@ -10,7 +10,6 @@
         </v-toolbar-title>
       </router-link>
 
-
       <v-spacer></v-spacer>
       <v-text-field hide-details filled label="Prepend inner" prepend-inner-icon="mdi-map-marker" rounded>
       </v-text-field>
@@ -73,11 +72,9 @@
             </v-list-item-title>
           </v-list-item>
           <v-list-item>
-
             <v-list-item-title>
               <router-link style="text-decoration: none; color: inherit;" to="/Login">
                 <button
-
                 >Devenir livreur</button>
               </router-link>
             </v-list-item-title>
@@ -86,52 +83,14 @@
       </v-list>
     </v-navigation-drawer>
 
+    <!-- Cart Drawer  -->
 
     <v-navigation-drawer  v-model="cartDrawer" absolute temporary location="right"  width="300">
-      <v-list nav dense >
-        <v-list-item-group v-model="group" active-class="deep-purple--text text--accent-4" >
-          <v-list-item >
-            <v-list-item-title>
-              VOTRE PANIER
-            </v-list-item-title>
-
-          </v-list-item>
-
-          <v-list-item>
-            <v-img class="img" src="./src/assets/products/burger.png" >
-            </v-img>
-            <v-list-item-title>
-              menue 280
-            </v-list-item-title>
-            <v-spacer></v-spacer>
-            x 1
-          </v-list-item>
-          <v-list-item>
-            <v-img class="img" src="./src/assets/products/burger.png" >
-            </v-img>
-            <v-list-item-title>
-              menue 280
-            </v-list-item-title>
-            <v-spacer></v-spacer>
-            x 1
-          </v-list-item>
-          <v-list-item>
-            <v-img class="img" src="./src/assets/products/burger.png" >
-            </v-img>
-            <v-list-item-title>
-              menue 280
-            </v-list-item-title>
-            <v-spacer></v-spacer>
-            x 1
-          </v-list-item>
-
-
-        </v-list-item-group>
-        
-      </v-list>
+      <CartItems/>
     </v-navigation-drawer>
-  </nav>
 
+
+  </nav>
 </template>
 
 
@@ -149,10 +108,12 @@
 <script >
 
 import ButtonPrimary from "../../atoms/button/ButtonPrimary.vue"
+import CartItems from "@/components/organism/CartItems.vue"
 
 
 
 export default {
+  components: {CartItems},
   data: () => ({
     drawer: false,
     group: null,

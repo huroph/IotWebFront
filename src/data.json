@@ -1,14 +1,25 @@
-[
-  {
-    "id": 1,
-    "name": "mcdo"
-  },
-  {
-    "id": 2,
-    "name": "mcdoo"
-  },
-  {
-    "id": 3,
-    "name": "mcdooo"
-  }
-]
+{
+  "restaurants": [
+    {
+      "id": 1,
+      "name": "Mcdonvxcalds",
+      "background": "item",
+      "mark": "4.5",
+      "delivery_charges": "4.99"
+    },
+    {
+      "id": 2,
+      "name": "Burger king",
+      "background": "item",
+      "mark": "4.5",
+      "delivery_charges": "4.99"
+    },
+    {
+      "id": 3,
+      "name": "Quick",
+      "background": "item",
+      "mark": "4.5",
+      "delivery_charges": "4.99"
+    }
+  ]
+}

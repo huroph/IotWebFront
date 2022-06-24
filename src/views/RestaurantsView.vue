@@ -1,8 +1,10 @@
 
 <script setup lang="ts">
-import RestoItem from '@/components/molecules/cards/RestoItem.vue'
+import RestoItem from '@/components/molecules/cards/RestauItem.vue'
 import productItem from "@/components/molecules/cards/productItem.vue";
 import categoriesItem from "@/components/categoriesItem.vue";
+
+
 
 </script>
 
