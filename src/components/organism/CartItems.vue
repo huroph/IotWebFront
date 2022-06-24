@@ -7,7 +7,7 @@
         </v-list-item-title>
       </v-list-item>
       <v-list-item>
-        <v-img class="img" src="./src/assets/products/burger.png" >
+        <v-img class="img" src="/products/burger.png" >
         </v-img>
         <v-list-item-title>
           menue 280
@@ -16,7 +16,7 @@
         x 1
       </v-list-item>
       <v-list-item>
-        <v-img class="img" src="./src/assets/products/burger.png" >
+        <v-img class="img" src="/products/burger.png" >
         </v-img>
         <v-list-item-title>
           menue 280
@@ -25,7 +25,7 @@
         x 1
       </v-list-item>
       <v-list-item>
-        <v-img class="img" src="./src/assets/products/burger.png" >
+        <v-img class="img" src="/products/burger.png" >
         </v-img>
         <v-list-item-title>
           menue 280

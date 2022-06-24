@@ -125,7 +125,7 @@ export default {
         title: '280 ORIGINAL',
         content: 'Pain spécial, steak haché, emmental et cheddar fondus, oignons, tomate, sauce, ketchup.',
         price: '9.99€',
-        src: './src/assets/products/burger.png',
+        src: '/products/burger.png',
         flex: 4
       },
 
