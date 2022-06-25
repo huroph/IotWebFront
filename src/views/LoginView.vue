@@ -1,19 +1,19 @@
 <template>
   <div class="container">
     <div class="box">
-      <form>
+      <form @submit="submit">
         <span class="text-center">login</span>
         <div class="input-container">
-          <input type="text" required=""/>
+          <input type="text" required="" name="email" v-model="email"/>
           <label>Email</label>
         </div>
 
         <div class="input-container">
-          <input type="mail" required=""/>
+          <input type="password" required="" name="password" v-model="password"/>
           <label>Mot de passe </label>
         </div>
         <div class="bottom-container">
-          <button type="button" class="btn">submit</button>
+          <button type="submit" class="btn">submit</button>
         </div>
 
       </form>
@@ -24,27 +24,13 @@
 </template>
 
 <script>
+
+import {LoginService} from "../services/loginService";
+
 export default {
   data: () => ({
-    valid: true,
-    name: '',
-    nameRules: [
-      v => !!v || 'Name is required',
-      v => (v && v.length <= 10) || 'Name must be less than 10 characters',
-    ],
     email: '',
-    emailRules: [
-      v => !!v || 'E-mail is required',
-      v => /.+@.+\..+/.test(v) || 'E-mail must be valid',
-    ],
-    select: null,
-    items: [
-      'Item 1',
-      'Item 2',
-      'Item 3',
-      'Item 4',
-    ],
-    checkbox: false,
+    password: '',
   }),
 
   methods: {
@@ -56,6 +42,16 @@ export default {
     },
     resetValidation () {
       this.$refs.form.resetValidation()
+    },
+    submit (e) {
+      e.preventDefault()
+      if (true) {
+
+        const result = new LoginService().loginUser(this.email, this.password);
+        result.then(response => {
+          console.log(response);
+        });
+      }
     },
   },
 }

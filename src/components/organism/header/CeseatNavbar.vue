@@ -24,18 +24,9 @@
               content="1"
           ></v-badge>
         </v-btn>
-        <router-link style="text-decoration: none; color: inherit;" to="/Login">
-          <v-btn
-              append
-          >Connexion</v-btn>
-        </router-link>
       </div>
-
-      <router-link style="text-decoration: none; color: inherit;" to="/Register">
-        <v-btn
-            append
-        >INSCRIPTION</v-btn>
-      </router-link>
+      <not-logged-btn v-if="isLoggedIn"></not-logged-btn>
+      <logged-btn v-else></logged-btn>
     </v-app-bar>
 
     <v-navigation-drawer  v-model="drawer" absolute temporary  >
@@ -100,25 +91,30 @@
   }
 
 
-  ::v-deep .v-responsive {
+  .v-responsive {
     max-width: 20% !important;
     max-height: 20% !important;
   }
 </style>
-<script >
+<script>
 
 import ButtonPrimary from "../../atoms/button/ButtonPrimary.vue"
 import CartItems from "@/components/organism/CartItems.vue"
+import {mapState} from "vuex";
+import NotLoggedBtn from "./NotLoggedBtn.vue"
+import LoggedBtn from "./LoggedBtn.vue"
 
 
 
 export default {
-  components: {CartItems},
+  components: {CartItems, NotLoggedBtn, LoggedBtn},
   data: () => ({
     drawer: false,
     group: null,
     cartDrawer: false,
-
+  }),
+  computed: mapState({
+    isLoggedIn: state => state.token.isLogged,
   }),
 }
 
