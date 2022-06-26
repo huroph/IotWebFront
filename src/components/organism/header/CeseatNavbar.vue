@@ -116,6 +116,7 @@ export default {
   computed: mapState({
     isLoggedIn: state => state.token.isLogged,
   }),
+
 }
 
 </script>

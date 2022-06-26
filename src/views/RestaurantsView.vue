@@ -1,30 +1,65 @@
 
-<script setup lang="ts">
-import RestoItem from '@/components/molecules/cards/RestauItem.vue'
-import productItem from "@/components/molecules/cards/productItem.vue";
+<script>
 import categoriesItem from "@/components/categoriesItem.vue";
+import sourceData from "@/data.json"
+import RestauItem from "@/components/molecules/cards/RestauItem.vue";
+export default {
+  components: {RestauItem, categoriesItem},
+  computed: {
+    destinationId() {
+      return parseInt(this.$route.params.categoryId)
+    },
+    destination() {
+      return sourceData['categories'].find(destination => destination.id === this.destinationId);
+    },
+    cardsData() {
+      const cardData = [];
+      this.cards.forEach((card) => {
+        if (card.categoryId === this.destinationId) cardData.push(card);
+      });
+      return cardData
+    }
+  },
+  data() {
+    return {
+      cards: [
+        {
+          categoryId: 1,
+          title: "American",
+          content: "jaime les frites",
+          price: 9.99,
+        },
+        {
+          categoryId: 2,
+          title: "Americain",
+          content: "jaime les frites",
+          price: 9.99,
+        },
 
+      ]
+    }
+  }
 
-
+}
 </script>
 
 <template>
     <div class="containers">
         <div class="grid-categories">
-            <categoriesItem />
+            <categoriesItem :cards="cardsData"/>
         </div>
     </div>
 
 
     <div class="containers">
         <div class="grid-container">
-            <RestoItem />
+            <RestauItem/>
         </div>
     </div>
 
 </template>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .grid-container {
     padding: 1em;
     display: flex;

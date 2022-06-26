@@ -1,11 +1,13 @@
 <template>
 
-  <div v-for="image in images" :key="image.name" :itemlist="image">
+  <div  v-for="item in destination" :key="item.name" :itemlist="item">
+<div v-on:click="redirect(item.id)">
+  <img :src="item.icon"  width="50" height="50" />
+  <div style="text-align:center">
+    {{ item.category }}
+  </div>
+</div>
 
-    <img :src="image.url" :alt="image.alt" width="50" height="50" />
-    <div style="text-align:center">
-      {{ image.name }}
-    </div>
   </div>
 
 
@@ -13,8 +15,9 @@
 </template>
 
 
-<script lang="ts">
-
+<script  >
+import router from "@/router";
+import sourceData from "@/data.json"
 const images = [
     { url: '/categories/alcohol.png', alt: 'I love you nature', name: 'alcohol' },
     { url: '/categories/american.png', alt: 'I love you nature', name: 'american' },
@@ -33,10 +36,16 @@ const images = [
 ]
 
 export default {
-    data() {
-        return {
-            images,
-        }
+  computed: {
+    destination() {
+      return sourceData['categories'];
     }
+  },
+  methods: {
+    redirect(categoryId) {
+      router.push({name: 'RestauBycategoryId', params: {categoryId: categoryId}});
+    }
+  },
+
 };
 </script>

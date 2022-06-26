@@ -1,7 +1,7 @@
 <template>
 
   <div class="containers">
-    <v-col v-for="card in cards" :key="card.title" :cols="card.cols">
+    <v-row v-for="card in cards" :key="card.title" :cols="card.cols">
       <v-card class=" productCard">
         <v-img :src="card.src"   style="position: relative" >
           <v-btn class="close"><p style="color: white">+</p></v-btn>
@@ -10,7 +10,7 @@
         </v-card-title>
         <v-card-subtitle class="title" style="margin-bottom: 5px" >{{card.price}}</v-card-subtitle>
       </v-card>
-    </v-col>
+    </v-row>
   </div>
 
 
@@ -18,8 +18,10 @@
 
 
 
-<style lang="scss">
+<style lang="scss" scoped>
 .productCard {
+
+  cursor: pointer;
   width: 200px !important;
   height: 100% !important;
   background: white;

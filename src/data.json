@@ -2,7 +2,7 @@
   "restaurants": [
     {
       "id": 1,
-      "category": "american",
+      "category": "1",
       "name": "McDonald's",
       "background": "restauBG/McdoBG.jpeg",
       "mark": "4.5",
@@ -11,7 +11,7 @@
     },
     {
       "id": 2,
-      "category": "american",
+      "category": "1",
       "name": "Burger king",
       "background": "restauBG/burgerKing.jpg",
       "mark": "4.5",
@@ -20,7 +20,7 @@
     },
     {
       "id": 3,
-      "category": "american",
+      "category": "1",
       "name": "KFC",
       "background": "restauBG/KFC.png",
       "mark": "4.5",
@@ -29,7 +29,7 @@
     },
     {
       "id": 3,
-      "category": "sushi",
+      "category": "2",
       "name": "planeteSushi",
       "background": "restauBG/planeteSushi.png",
       "mark": "4.5",
@@ -38,12 +38,75 @@
     },
     {
       "id": 3,
-      "category": "sushi",
+      "category": "2",
       "name": "bbb jtrev",
       "background": "restauBG/planeteSushi.png",
       "mark": "4.5",
       "delivery_charges": "• 4.99",
       "time_to_delivery": "20-30min"
     }
+  ],
+  "categories": [
+    {
+      "id": 1,
+      "category": "alcohol",
+      "icon": "categories/alcohol.png"
+    },
+    {
+      "id": 2,
+      "category": "american",
+      "icon": "categories/american.png"
+    },
+    {
+      "id": 3,
+      "category": "burger",
+      "icon": "categories/burger.png"
+    },
+    {
+      "id": 4,
+      "category": "convenience",
+      "icon": "categories/convenience.png"
+    },
+    {
+      "id": 5,
+      "category": "deals",
+      "icon": "categories/deals.png"
+    },
+    {
+      "id": 6,
+      "category": "french",
+      "icon": "categories/french.png"
+    },
+    {
+      "id": 7,
+      "category": "halal",
+      "icon": "categories/halal.png"
+    },
+    {
+      "id": 8,
+      "category": "italian",
+      "icon": "categories/italian.png"
+    },
+    {
+      "id": 9,
+      "category": "japanese",
+      "icon": "categories/japanese.png"
+    },
+    {
+      "id": 10,
+      "category": "pizza",
+      "icon": "categories/pizza.png"
+    },
+    {
+      "id": 11,
+      "category": "sushi",
+      "icon": "categories/sushi.png"
+    },
+    {
+      "id": 12,
+      "category": "thai",
+      "icon": "categories/thai.png"
+    }
+
   ]
 }

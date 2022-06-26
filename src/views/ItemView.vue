@@ -17,9 +17,9 @@
 .grid-container {
 
   padding: 1em;
-  display: flex;
-  justify-content: space-around;
   flex-wrap: wrap;
+  justify-content: space-around;
+
   flex-direction: row;
   column-count: 4;
 
@@ -70,37 +70,57 @@ export default {
       cards: [
         {
           restauId: 1,
-          title: "Mcdonald's",
+          title: "280 Original",
+          src: "../products/burger.png",
+          content: "jaime les frites",
+          price: 9.99,
+        },
+        {
+          restauId: 1,
+          title: "nuggets x20",
+          src: "../products/nuggets.png",
+          content: "jaime les frites",
+          price: 9.99,
+        },
+        {
+          restauId: 1,
+          title: "Big Mac",
+          src: "../products/big mac.png",
           content: "jaime les frites",
           price: 9.99,
         },
         {
           restauId: 2,
-          title: "mcdo",
+          title: "doublesteakhouse",
+          src: "../products/doublesteakhouse.jpeg",
           content: "jaime les frites",
           price: 9.99,
         },
         {
           restauId: 2,
-          title: "mcdo",
+          title: "longchicken",
+          src: "../products/longchicken.jpeg",
           content: "jaime les frites",
           price: 9.99,
         },
         {
-          restauId: 1,
-          title: "mcdo",
+          restauId: 2,
+          title: "bigKing",
+          src: "../products/bigKing.jpeg",
           content: "jaime les frites",
           price: 9.99,
         },
         {
-          restauId: 1,
-          title: "mcdo",
+          restauId: 3,
+          title: "californiaMix",
+          src: "../products/californiaMix.jpeg",
           content: "jaime les frites",
           price: 9.99,
         },
         {
-          restauId: 1,
-          title: "mcdo",
+          restauId: 3,
+          title: "loveboxsaumon",
+          src: "../products/loveboxsaumon.jpeg",
           content: "jaime les frites",
           price: 9.99,
         },
