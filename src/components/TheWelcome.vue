@@ -7,11 +7,13 @@
       <div class="container">
         <div class="row">
           <input  type="text" id="name" name="name" placeholder="Saisissez l’adresse de livraison">
-          <router-link to="/restaurants"><button class="btnFindRestaurant"><a class="textBtn"
-                >Trouver un restaurant</a> </button></router-link>
-          <v-img class="img" src="/products/burger.png" width="100">
+          <router-link to="/restaurants"><button class="btnFindRestaurant">
+            <a class="textBtn">Trouver un restaurant</a>
+          </button>
+          </router-link>
 
-          </v-img>
+
+
         </div>
       </div>
     </div>
@@ -47,8 +49,8 @@ input[type=text] {
   position: absolute;
   width: 313px;
   height: 50px;
+  border:solid 1px grey ;
   border-radius: 27px !important;
-  border: 0;
   align-items: center;
   text-align: center;
 }

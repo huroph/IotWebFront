@@ -2,23 +2,21 @@
 
   <div class="wrapper" v-for="item in destination" :key="item.name" :itemlist="item">
     <div class="container" v-on:click="redirect(item.id)">
-      <div class="top"></div>
+      <v-img max-height="150"
+             width="2000"
+             :src=item.background>
+        </v-img>
       <div class="bottom">
-        <div class="left">
+
           <div class="details">
+            <img src="./icon_delevry.png"
+                  />
             <h1>{{ item.name }}</h1>
-            <p>{{ item.delivery_charges }}</p>
+            <p>{{ item.delivery_charges }} frais de livraison</p>
           </div>
 
-        </div>
-        <div class="right">
 
-          <div class="details">
-            <h1>Chair</h1>
-            <p>Added to your cart</p>
-          </div>
 
-        </div>
       </div>
     </div>
   </div>
@@ -45,10 +43,15 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
+::v-deep .v-responsive {
+  max-width: 100% !important;
+  max-height: 100% !important;
+}
 .wrapper {
   cursor: pointer;
-  width: 250px;
-  height: 265px;
+  max-width: 300px;
+  height: 320px;
   background: white;
   margin: auto;
   position: relative;
@@ -67,18 +70,8 @@ export default {
     width: 100%;
     height: 100%;
 
-    .top {
-      height: 80%;
-      width: 100%;
-      background: url(../../../assets/McdoBG.jpeg) no-repeat center center;
-      -webkit-background-size: 100%;
-      -moz-background-size: 100%;
-      -o-background-size: 100%;
-      background-size: 130%;
-    }
-
     .bottom {
-      width: 200%;
+      width: 100%;
       height: 20%;
       transition: transform 0.5s;
 
@@ -103,7 +96,7 @@ export default {
       .left {
         height: 100%;
         width: 50%;
-        background: #f4f4f4;
+        background: #ffffff;
         position: relative;
         float: left;
 

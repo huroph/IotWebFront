@@ -2,24 +2,48 @@
   "restaurants": [
     {
       "id": 1,
-      "name": "Mcdonvxcalds",
-      "background": "item",
+      "category": "american",
+      "name": "McDonald's",
+      "background": "restauBG/McdoBG.jpeg",
       "mark": "4.5",
-      "delivery_charges": "4.99"
+      "delivery_charges": "• 4.99",
+      "time_to_delivery": "20-30min"
     },
     {
       "id": 2,
+      "category": "american",
       "name": "Burger king",
-      "background": "item",
+      "background": "restauBG/burgerKing.jpg",
       "mark": "4.5",
-      "delivery_charges": "4.99"
+      "delivery_charges": "• 4.99",
+      "time_to_delivery": "20-30min"
     },
     {
       "id": 3,
-      "name": "Quick",
-      "background": "item",
+      "category": "american",
+      "name": "KFC",
+      "background": "restauBG/KFC.png",
       "mark": "4.5",
-      "delivery_charges": "4.99"
+      "delivery_charges": "• 4.99",
+      "time_to_delivery": "20-30min"
+    },
+    {
+      "id": 3,
+      "category": "sushi",
+      "name": "planeteSushi",
+      "background": "restauBG/planeteSushi.png",
+      "mark": "4.5",
+      "delivery_charges": "• 4.99",
+      "time_to_delivery": "20-30min"
+    },
+    {
+      "id": 3,
+      "category": "sushi",
+      "name": "bbb jtrev",
+      "background": "restauBG/planeteSushi.png",
+      "mark": "4.5",
+      "delivery_charges": "• 4.99",
+      "time_to_delivery": "20-30min"
     }
   ]
 }
