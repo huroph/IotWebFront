@@ -5,38 +5,38 @@
       <v-img max-height="150"
              width="2000"
              :src=item.background>
-        </v-img>
+      </v-img>
       <div class="bottom">
-
-          <div class="details">
-            <img src="./icon_delevry.png"
-                  />
-            <h1>{{ item.name }}</h1>
-            <p>{{ item.delivery_charges }} frais de livraison</p>
+          <h1>{{ item.name }}</h1>
+        <div class="row">
+          <div class="left" style="margin-top: 1px;margin-right: 2px ">
+            <v-img max-height="10"
+                   width="20"
+                   src="./icon_delevry.png">
+            </v-img>
           </div>
-
-
-
+          <p>{{ item.delivery_charges }} frais de livraison</p>
+          <p style="font-size: small;color: #555555 ;margin-top: 3px;margin-left: 5px">{{ item.time_to_delivery }}</p>
+        </div>
       </div>
     </div>
   </div>
 
 
-
 </template>
 <script>
- import router from "@/router";
- import sourceData from "@/data.json"
+import router from "@/router";
+import sourceData from "@/data.json"
 
 export default {
-   computed: {
-     destination(){
-       return sourceData['restaurants'];
-     }
-   },
+  computed: {
+    destination() {
+      return sourceData['restaurants'];
+    }
+  },
   methods: {
     redirect(restauId) {
-      router.push({name: 'menuByRestauId', params: {restauId:restauId}});
+      router.push({name: 'menuByRestauId', params: {restauId: restauId}});
     }
   }
 };
@@ -48,16 +48,17 @@ export default {
   max-width: 100% !important;
   max-height: 100% !important;
 }
+
 .wrapper {
   cursor: pointer;
   max-width: 300px;
-  height: 320px;
+  height: 100%;
   background: white;
   margin: auto;
   position: relative;
   overflow: hidden;
   border-radius: 10px 10px 10px 10px;
-  box-shadow: 0;
+  box-shadow: 1px 3px 3px rgba(0, 0, 0, 0.2);
   transform: scale(0.95);
   transition: box-shadow 0.5s, transform 0.5s;
 
@@ -66,11 +67,23 @@ export default {
     box-shadow: 5px 20px 30px rgba(0, 0, 0, 0.2);
   }
 
+  .row{
+    flex-direction: row;
+    display: flex;
+  }
+
+  .txtTimeToTelivery {
+    color: grey !important;
+    font-size: small;
+  }
+
   .container {
     width: 100%;
     height: 100%;
 
     .bottom {
+      margin: 10px;
+      margin-left: 10px;
       width: 100%;
       height: 20%;
       transition: transform 0.5s;
@@ -87,94 +100,20 @@ export default {
       }
 
       p {
-        top: -5px;
-        margin-left: 20px;
+        max-width: 200px;
         padding: 0;
         color: black
       }
 
       .left {
-        height: 100%;
-        width: 50%;
         background: #ffffff;
         position: relative;
         float: left;
-
-        .details {
-
-          float: left;
-          width: calc(70% - 40px);
-        }
-
-        .buy {
-          float: right;
-          width: calc(30% - 2px);
-          height: 100%;
-          background: #f1f1f1;
-          transition: background 0.5s;
-          border-left: solid thin rgba(0, 0, 0, 0.1);
-
-          i {
-            font-size: 30px;
-
-            color: #254053;
-            transition: transform 0.5s;
-          }
-
-          &:hover {
-            background: #A6CDDE;
-          }
-
-          &:hover i {
-            transform: translateY(5px);
-            color: #00394B;
-          }
-        }
       }
 
       .right {
-        width: 50%;
-        background: #A6CDDE;
-        color: white;
         float: right;
-        height: 200%;
-        overflow: hidden;
-
-        .details {
-
-          float: right;
-          width: calc(70% - 40px);
-        }
-
-        .done {
-          width: calc(30% - 2px);
-          float: left;
-          transition: transform 0.5s;
-          border-right: solid thin rgba(255, 255, 255, 0.3);
-          height: 50%;
-
-          i {
-            font-size: 30px;
-
-            color: white;
-          }
-        }
-
-        .remove {
-          width: calc(30% - 1px);
-          clear: both;
-          border-right: solid thin rgba(255, 255, 255, 0.3);
-          height: 50%;
-          background: #BC3B59;
-          transition: transform 0.5s, background 0.5s;
-
-
-          i {
-            transition: transform 0.5s;
-            font-size: 30px;
-            color: white;
-          }
-        }
+        position: relative;
 
       }
     }
