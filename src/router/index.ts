@@ -6,12 +6,11 @@ const router = createRouter({
   routes: [
     { path: '/', name: 'home', component: HomeView },
     { path: '/about', name: 'about', component: () => import('../views/AboutView.vue') },
-    {path: '/Restaurants', name: 'RestaurantsView', component: () => import('../views/RestaurantsView.vue')},
-    {path: '/Login', name: 'LoginView', component: () => import('../views/LoginView.vue')},
-    {path: '/Register', name: 'RegisterView', component: () => import('../views/RegisterView.vue')},
+    {path: '/restaurants', name: 'restaurantsView', component: () => import('../views/RestaurantsView.vue')},
+    {path: '/login', name: 'LoginView', component: () => import('../views/LoginView.vue')},
+    {path: '/register', name: 'RegisterView', component: () => import('../views/RegisterView.vue')},
     {path: '/menu/:restauId', name:'menuByRestauId', component: () => import('@/views/ItemView.vue') },
-    {path: '/Restaurants/:categoryId', name:'RestauBycategoryId', component: () => import('@/views/RestaurantsView.vue') },
-    {path: '/LoginPro',name: 'LoginProView',component: () => import('../views/LoginProView.vue')},
+    {path: '/loginPro',name: 'LoginProView',component: () => import('../views/LoginProView.vue')},
 
 
 

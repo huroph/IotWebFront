@@ -36,7 +36,7 @@
         </div>
         <div class="bottom-container">
           <button type="button" class="btn">submit</button>
-          <router-link style="text-decoration: none; color: inherit;" to="/Login">
+          <router-link style="text-decoration: none; color: inherit;" to="/login">
             <p style="color: white"> Vous avez deja un compte ?</p>
           </router-link>
 

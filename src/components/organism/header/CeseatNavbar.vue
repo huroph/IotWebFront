@@ -35,7 +35,7 @@
           <v-list-item >
 
             <v-list-item-title>
-              <router-link style="text-decoration: none; color: inherit;" to="/Login">
+              <router-link style="text-decoration: none; color: inherit;" to="/login">
                 <v-btn
                     append
                 >Connexion</v-btn>
@@ -46,7 +46,7 @@
           <v-list-item>
 
             <v-list-item-title>
-              <router-link style="text-decoration: none; color: inherit;" to="/Register">
+              <router-link style="text-decoration: none; color: inherit;" to="/register">
                 <v-btn
                     append
                 >INSCRIPTION</v-btn>
@@ -56,7 +56,7 @@
           <v-list-item>
 
             <v-list-item-title>
-              <router-link style="text-decoration: none; color: inherit;" to="/LoginPro">
+              <router-link style="text-decoration: none; color: inherit;" to="/loginPro">
                 <button
                 >Créez un compte professionnel</button>
               </router-link>
@@ -64,7 +64,7 @@
           </v-list-item>
           <v-list-item>
             <v-list-item-title>
-              <router-link style="text-decoration: none; color: inherit;" to="/Login">
+              <router-link style="text-decoration: none; color: inherit;" to="/login">
                 <button
                 >Devenir livreur</button>
               </router-link>

@@ -1,6 +1,5 @@
 <template>
-
-  <div class="wrapper" v-for="item in destination" :key="item.name" :itemlist="item">
+  <div class="wrapper" v-for="item in restaurants" :key="item.name" :itemlist="item">
     <div class="container" v-on:click="redirect(item.id)">
       <v-img max-height="150"
              width="2000"
@@ -21,19 +20,13 @@
       </div>
     </div>
   </div>
-
-
 </template>
 <script>
 import router from "@/router";
 import sourceData from "@/data.json"
 
 export default {
-  computed: {
-    destination() {
-      return sourceData['restaurants'];
-    }
-  },
+  props: ['restaurants'],
   methods: {
     redirect(restauId) {
       router.push({name: 'menuByRestauId', params: {restauId: restauId}});

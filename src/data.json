@@ -2,7 +2,7 @@
   "restaurants": [
     {
       "id": 1,
-      "category": "1",
+      "categoryId": 2,
       "name": "McDonald's",
       "background": "restauBG/McdoBG.jpeg",
       "mark": "4.5",
@@ -11,7 +11,7 @@
     },
     {
       "id": 2,
-      "category": "1",
+      "categoryId": 2,
       "name": "Burger king",
       "background": "restauBG/burgerKing.jpg",
       "mark": "4.5",
@@ -20,7 +20,7 @@
     },
     {
       "id": 3,
-      "category": "1",
+      "categoryId": 2,
       "name": "KFC",
       "background": "restauBG/KFC.png",
       "mark": "4.5",
@@ -29,24 +29,21 @@
     },
     {
       "id": 3,
-      "category": "2",
+      "categoryId": 11,
       "name": "planeteSushi",
       "background": "restauBG/planeteSushi.png",
       "mark": "4.5",
       "delivery_charges": "• 4.99",
       "time_to_delivery": "20-30min"
-    },
-    {
-      "id": 3,
-      "category": "2",
-      "name": "bbb jtrev",
-      "background": "restauBG/planeteSushi.png",
-      "mark": "4.5",
-      "delivery_charges": "• 4.99",
-      "time_to_delivery": "20-30min"
     }
+
   ],
   "categories": [
+    {
+      "id": "*",
+      "category": "all",
+      "icon": "categories/top_eats.png"
+    },
     {
       "id": 1,
       "category": "alcohol",
