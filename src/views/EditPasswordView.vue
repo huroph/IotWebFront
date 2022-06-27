@@ -1,19 +1,24 @@
 <template>
   <div class="container">
     <div class="box">
-      <form @submit="submit">
-        <span class="text-center">login</span>
+      <form @submit="editPassword">
+        <span class="text-center">Edition du mot de passe</span>
         <div class="input-container">
-          <input type="text" required="" name="email" v-model="email"/>
-          <label>Email</label>
+          <input type="password" v-model="oldPassword"/>
+          <label>Ancien mot de passe</label>
         </div>
-
-        <div class="input-container">
-          <input type="password" required="" name="password" v-model="password"/>
-          <label>Mot de passe </label>
+        <div class="row">
+          <div class="input-container">
+            <input type="password" v-model="password"/>
+            <label>Mot de passe</label>
+          </div>
+          <div class="input-container" style="margin-left: 5px">
+            <input type="text" v-model="confirmPassword"/>
+            <label>Confirmation du mot de passe</label>
+          </div>
         </div>
         <div class="bottom-container">
-          <button type="submit" class="btn">submit</button>
+          <button type="submit" class="btn">Modifier</button>
         </div>
 
       </form>
@@ -24,54 +29,58 @@
 </template>
 
 <script>
-
-import {LoginService} from "../services/loginService";
-import router from "../router";
+import {EditAccountService} from "../services/editAccountService";
 
 export default {
   data: () => ({
-    email: '',
     password: '',
+    confirmPassword: '',
+    oldPassword: ''
   }),
-  created() {
-    if (this.$store.state.token.isLogged){
-      router.push("/")
-    }
-
-  },
   methods: {
-    validate () {
-      this.$refs.form.validate()
-    },
-    reset () {
-      this.$refs.form.reset()
-    },
-    resetValidation () {
-      this.$refs.form.resetValidation()
-    },
-    submit (e) {
-      e.preventDefault()
-      if (true) {
-
-        const result = new LoginService().loginUser(this.email, this.password, this.$store, this.$router);
-        result.then(response => {
+    async editPassword(e) {
+      e.preventDefault();
+      if (this.password === this.confirmPassword && this.password.length > 5) {
+        const result = new EditAccountService().editUserPassword({
+          oldPassword: this.oldPassword,
+          newPassword: this.password
+        }, this.$store, this.$router);
+        result.then(async response => {
           console.log(response);
           this.$swal({
             icon: response.success ? "success" : "error",
             text: response.data
           });
           if (response.success){
-            router.push("/")
+            await this.$router.push("/")
           }
         });
+      } else {
+        this.$swal({
+          title: "Erreur",
+          text: "Les mots de passe ne correspondent pas ou inferieur à 6 caractères",
+          icon: "error"
+        })
       }
-    },
+    }
   },
+  beforeCreate() {
+
+  }
 }
 </script>
 
 <style scoped>
-
+.bottom-container {
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+}
 
 .container{
   width: 100%;
@@ -82,6 +91,8 @@ export default {
   background-size: cover;
   position: relative;
 }
+
+
 body{
   background-image: url("https://images.pexels.com/photos/891252/pexels-photo-891252.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
   background-position: center;
@@ -90,6 +101,12 @@ body{
   background-size: cover;
   min-height:100vh;
   font-family: 'Noto Sans', sans-serif;
+}
+.row{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 }
 .text-center{
   color:#fff;
@@ -144,26 +161,25 @@ body{
   color: #fff;
   padding:10px 20px;
   text-transform:uppercase;
-  margin-top:50px;
+  margin-bottom: 10px;
   border-radius:30px;
   cursor:pointer;
   position:relative;
 }
-
+/*.btn:after{
+	content:"";
+	position:absolute;
+	background:rgba(0,0,0,0.50);
+	top:0;
+	right:0;
+	width:100%;
+	height:100%;
+}*/
 .input-container input:focus ~ label,
 .input-container input:valid ~ label{
   top:-12px;
   font-size:12px;
 
 }
-.bottom-container {
-  display: flex;
-  flex-direction: column;
-  justify-items: center;
-  justify-content: center;
-  align-content: center;
-  align-items: center;
-  justify-content: center;
-  margin-top: 20px;
-}
+
 </style>

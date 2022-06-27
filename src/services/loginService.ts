@@ -1,6 +1,8 @@
 import {HttpService} from "@/services/http.service";
-import {User} from "@/models/user.model";
-import {store} from "@/store/store";
+import type {User} from "@/models/user.model";
+import type {Store} from "vuex";
+import {redirect} from "@/services/redirectService";
+import type {Router} from "vue-router";
 
 export class LoginService extends HttpService {
 
@@ -8,22 +10,22 @@ export class LoginService extends HttpService {
         super();
     }
 
-    async loginUser(email:string, password:string){
+    async loginUser(email:string, password:string, store: Store<any>, router: Router){
         try {
             const result = await this.http.post<{ user: User }>('auth/login', {email: email, password: password})
             // store into local storage
             localStorage.setItem('token', result.data.user.accessToken);
             // store into store object
             await store.dispatch('loginUser', result.data.user);
-            console.log(store.state.user);
-            return {data: result.data.user, code: 200};
-        }catch (e) {
+            return {data: "Vous etes connecté !", code: 200, success: true};
+        }catch (e: any) {
             if (!e.response) {
                 console.log(e);
-                return {data: 'Internal server error', code: 500};
+                redirect("500", store, router);
+                return {data: 'Internal server error', code: 500, success: false};
             }
-
-            return {data: e.response.data, code: e.response.status};
+            redirect(e.response.status, store, router);
+            return {data: e.response.data.pop().message, code: e.response.status, success: false};
         }
     }
 }

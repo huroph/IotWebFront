@@ -1,41 +1,45 @@
 <template>
   <div class="container">
     <div class="box">
-      <form>
+      <form @submit="register">
         <span class="text-center">INSCRIPTION</span>
         <div class="row">
           <div class="input-container">
-            <input type="text" required=""/>
+            <input type="text" v-model="lastName"/>
             <label>Nom de famille</label>
           </div>
           <div class="input-container" style="margin-left: 5px">
-            <input type="mail" required=""/>
+            <input type="text" v-model="firstName"/>
             <label>Prénom</label>
           </div>
         </div>
 
         <div class="input-container">
-          <input type="text" required=""/>
+          <input type="email" v-model="email"/>
           <label>Email</label>
         </div>
         <div class="input-container">
-          <input type="text" required=""/>
+          <input type="text" v-model="phone"/>
           <label>Téléphone</label>
         </div>
         <div class="input-container">
-          <input type="text" required=""/>
+          <input type="text" v-model="address"/>
+          <label>Adresse</label>
+        </div>
+        <div class="input-container">
+          <input type="text" v-model="password"/>
           <label>Mot de passe</label>
         </div>
         <div class="input-container">
-          <input type="text" required=""/>
+          <input type="text" v-model="confirmPassword"/>
           <label>Confirmez Mot de passe</label>
         </div>
         <div class="input-container">
-          <input type="text" required=""/>
+          <input type="text" v-model="refereeCode"/>
           <label>Code parrainage</label>
         </div>
         <div class="bottom-container">
-          <button type="button" class="btn">submit</button>
+          <button type="submit" class="btn">submit</button>
           <router-link style="text-decoration: none; color: inherit;" to="/login">
             <p style="color: white"> Vous avez deja un compte ?</p>
           </router-link>
@@ -50,27 +54,26 @@
 </template>
 
 <script>
+import {RegisterService} from "../services/registerService";
+
 export default {
   data: () => ({
-    valid: true,
-    name: '',
     nameRules: [
       v => !!v || 'Name is required',
       v => (v && v.length <= 10) || 'Name must be less than 10 characters',
     ],
-    email: '',
+    firstName: 'test',
+    lastName: 'test',
+    password: 'dddd',
+    confirmPassword: 'dddd',
+    refereeCode: '',
+    phone: '34567890987654',
+    email: 'ggggg@ggg.com',
+    address: 'ggggg',
     emailRules: [
       v => !!v || 'E-mail is required',
       v => /.+@.+\..+/.test(v) || 'E-mail must be valid',
     ],
-    select: null,
-    items: [
-      'Item 1',
-      'Item 2',
-      'Item 3',
-      'Item 4',
-    ],
-    checkbox: false,
   }),
 
   methods: {
@@ -83,6 +86,37 @@ export default {
     resetValidation () {
       this.$refs.form.resetValidation()
     },
+    async register(e) {
+      e.preventDefault();
+      if (this.password === this.confirmPassword) {
+        const result = new RegisterService().registerUser({
+          firstName: this.firstName,
+          lastName: this.lastName,
+          email: this.email,
+          password: this.password,
+          phone: this.phone,
+          refereeCode: this.refereeCode,
+          address: this.address,
+        }, this.$store, this.$router);
+        result.then(async response => {
+          console.log(response);
+          this.$swal({
+            icon: response.success ? "success" : "error",
+            text: response.data
+          });
+          if (response.success){
+            await store.dispatch('loginUser', result.data.user);
+            router.push("/")
+          }
+        });
+      } else {
+        this.$swal({
+          title: "Erreur",
+          text: "Les mots de passe ne correspondent pas",
+          icon: "error"
+        })
+      }
+    }
   },
 }
 </script>

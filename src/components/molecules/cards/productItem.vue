@@ -1,10 +1,10 @@
 <template>
 
   <div class="containers">
-    <v-row v-for="card in cards" :key="card.title" :cols="card.cols">
+    <v-row v-for="card in cards" :key="card.title" :cols="card.cols" :x-id="card.id">
       <v-card class=" productCard">
         <v-img :src="card.src"   style="position: relative" >
-          <v-btn class="close"><p style="color: white">+</p></v-btn>
+          <v-btn class="close" @click="addToCart(card.id, card.price, card.title, $event)"><p style="color: white">+</p></v-btn>
         </v-img>
         <v-card-title h5 class="title">{{card.title}}
         </v-card-title>
@@ -58,11 +58,22 @@
 </style>
 
 <script lang="ts">
+import {Product} from "@/models/product.model";
+
 export default {
   name:"productItem",
   props:{
     cards: [],
   },
+  methods:{
+    addToCart(id: Number, unitPrice: Number, name: String, e: any){
+      console.log(id);
+      this.$store.commit("addToCart", new Product({id: id, unitPrice: unitPrice, name: name}));
+    },
+  },
+  created() {
+    console.log(this.$store.state.cart);
+  }
 
 }
 </script>

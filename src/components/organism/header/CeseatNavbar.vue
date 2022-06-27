@@ -25,52 +25,15 @@
           ></v-badge>
         </v-btn>
       </div>
-      <not-logged-btn v-if="isLoggedIn"></not-logged-btn>
-      <logged-btn v-else></logged-btn>
+      <logged-btn v-if="isLoggedIn"></logged-btn>
+      <not-logged-btn v-else></not-logged-btn>
     </v-app-bar>
 
-    <v-navigation-drawer  v-model="drawer" absolute temporary  >
-      <v-list nav dense >
-        <v-list-item-group v-model="group" active-class="deep-purple--text text--accent-4" >
-          <v-list-item >
+    <v-navigation-drawer v-model="drawer" absolute temporary>
+      <v-list nav dense>
+        <logged-side v-if="isLoggedIn"></logged-side>
+        <not-logged-side v-else></not-logged-side>
 
-            <v-list-item-title>
-              <router-link style="text-decoration: none; color: inherit;" to="/login">
-                <v-btn
-                    append
-                >Connexion</v-btn>
-              </router-link>
-            </v-list-item-title>
-          </v-list-item>
-
-          <v-list-item>
-
-            <v-list-item-title>
-              <router-link style="text-decoration: none; color: inherit;" to="/register">
-                <v-btn
-                    append
-                >INSCRIPTION</v-btn>
-              </router-link>
-            </v-list-item-title>
-          </v-list-item>
-          <v-list-item>
-
-            <v-list-item-title>
-              <router-link style="text-decoration: none; color: inherit;" to="/loginPro">
-                <button
-                >Créez un compte professionnel</button>
-              </router-link>
-            </v-list-item-title>
-          </v-list-item>
-          <v-list-item>
-            <v-list-item-title>
-              <router-link style="text-decoration: none; color: inherit;" to="/login">
-                <button
-                >Devenir livreur</button>
-              </router-link>
-            </v-list-item-title>
-          </v-list-item>
-        </v-list-item-group>
       </v-list>
     </v-navigation-drawer>
 
@@ -99,18 +62,19 @@
 <script>
 
 import ButtonPrimary from "../../atoms/button/ButtonPrimary.vue"
-import CartItems from "@/components/organism/CartItems.vue"
+import CartItems from "@/components/organism/header/CartItems.vue"
 import {mapState} from "vuex";
 import NotLoggedBtn from "./NotLoggedBtn.vue"
 import LoggedBtn from "./LoggedBtn.vue"
+import LoggedSide from "@/components/organism/header/LoggedSide.vue";
+import NotLoggedSide from "@/components/organism/header/NotLoggedSide.vue";
 
 
 
 export default {
-  components: {CartItems, NotLoggedBtn, LoggedBtn},
+  components: {CartItems, NotLoggedBtn, LoggedBtn, NotLoggedSide, LoggedSide},
   data: () => ({
     drawer: false,
-    group: null,
     cartDrawer: false,
   }),
   computed: mapState({

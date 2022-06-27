@@ -1,19 +1,33 @@
 <template>
   <div class="container">
     <div class="box">
-      <form @submit="submit">
-        <span class="text-center">login</span>
-        <div class="input-container">
-          <input type="text" required="" name="email" v-model="email"/>
-          <label>Email</label>
+      <form @submit="register">
+        <span class="text-center">Edition du compte</span>
+        <div class="row">
+          <div class="input-container">
+            <input type="text" v-model="lastName"/>
+            <label>Nom de famille</label>
+          </div>
+          <div class="input-container" style="margin-left: 5px">
+            <input type="text" v-model="firstName"/>
+            <label>Prénom</label>
+          </div>
         </div>
 
         <div class="input-container">
-          <input type="password" required="" name="password" v-model="password"/>
-          <label>Mot de passe </label>
+          <input type="email" v-model="email"/>
+          <label>Email</label>
+        </div>
+        <div class="input-container">
+          <input type="text" v-model="phone"/>
+          <label>Téléphone</label>
+        </div>
+        <div class="input-container">
+          <input type="text" v-model="address"/>
+          <label>Adresse</label>
         </div>
         <div class="bottom-container">
-          <button type="submit" class="btn">submit</button>
+          <button type="submit" class="btn">Modifier</button>
         </div>
 
       </form>
@@ -24,21 +38,10 @@
 </template>
 
 <script>
-
-import {LoginService} from "../services/loginService";
-import router from "../router";
+import {EditAccountService} from "../services/editAccountService";
 
 export default {
-  data: () => ({
-    email: '',
-    password: '',
-  }),
-  created() {
-    if (this.$store.state.token.isLogged){
-      router.push("/")
-    }
-
-  },
+  data: function () { console.log(this.$store.state.user); return this.$store.state.user;},
   methods: {
     validate () {
       this.$refs.form.validate()
@@ -49,29 +52,44 @@ export default {
     resetValidation () {
       this.$refs.form.resetValidation()
     },
-    submit (e) {
-      e.preventDefault()
-      if (true) {
-
-        const result = new LoginService().loginUser(this.email, this.password, this.$store, this.$router);
-        result.then(response => {
-          console.log(response);
-          this.$swal({
-            icon: response.success ? "success" : "error",
-            text: response.data
-          });
-          if (response.success){
-            router.push("/")
-          }
+    async register(e) {
+      e.preventDefault();
+      const result = new EditAccountService().editUserInfos({
+        firstName: this.firstName,
+        lastName: this.lastName,
+        email: this.email,
+        phone: this.phone,
+        address: this.address,
+      }, this.$store, this.$router);
+      result.then(async response => {
+        console.log(response);
+        this.$swal({
+          icon: response.success ? "success" : "error",
+          text: response.data
         });
-      }
-    },
+        if (response.success){
+          await this.$router.push("/")
+        }
+      });
+    }
   },
+  beforeCreate() {
+
+  }
 }
 </script>
 
 <style scoped>
-
+.bottom-container {
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+}
 
 .container{
   width: 100%;
@@ -82,6 +100,8 @@ export default {
   background-size: cover;
   position: relative;
 }
+
+
 body{
   background-image: url("https://images.pexels.com/photos/891252/pexels-photo-891252.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
   background-position: center;
@@ -90,6 +110,12 @@ body{
   background-size: cover;
   min-height:100vh;
   font-family: 'Noto Sans', sans-serif;
+}
+.row{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 }
 .text-center{
   color:#fff;
@@ -144,26 +170,25 @@ body{
   color: #fff;
   padding:10px 20px;
   text-transform:uppercase;
-  margin-top:50px;
+  margin-bottom: 10px;
   border-radius:30px;
   cursor:pointer;
   position:relative;
 }
-
+/*.btn:after{
+	content:"";
+	position:absolute;
+	background:rgba(0,0,0,0.50);
+	top:0;
+	right:0;
+	width:100%;
+	height:100%;
+}*/
 .input-container input:focus ~ label,
 .input-container input:valid ~ label{
   top:-12px;
   font-size:12px;
 
 }
-.bottom-container {
-  display: flex;
-  flex-direction: column;
-  justify-items: center;
-  justify-content: center;
-  align-content: center;
-  align-items: center;
-  justify-content: center;
-  margin-top: 20px;
-}
+
 </style>

@@ -19,5 +19,8 @@ export default defineComponent({
     
     }
   },
+  beforeCreate() {
+    this.$store.commit('initialiseStore');
+  }
 })
 </script>

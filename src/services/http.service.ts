@@ -1,4 +1,5 @@
-import axios, {AxiosInstance} from "axios";
+import axios from "axios";
+import type {AxiosInstance} from "axios";
 
 export abstract class HttpService {
 
@@ -9,12 +10,12 @@ export abstract class HttpService {
      * @param userToken
      * @protected
      */
-    protected constructor(userToken?: string) {
+    protected constructor() {
         this.http = axios.create({
             baseURL:'http://localhost:8080/',
             headers: {
                 'Content-Type': 'application/json',
-                'x-auth': userToken || null
+                'x-auth': localStorage.getItem("token") || null
             }
         });
     }

@@ -6,15 +6,23 @@
           VOTRE PANIER
         </v-list-item-title>
       </v-list-item>
-      <v-list-item>
-        <v-img class="img" src="/products/burger.png" >
-        </v-img>
-        <v-list-item-title>
-          menue 280
-        </v-list-item-title>
-        <v-spacer></v-spacer>
-        x 1
-      </v-list-item>
+      <div v-for="item in cartData">
+        <v-list-item>
+          <v-img class="img" src="/products/burger.png" >
+          </v-img>
+          <v-list-item-title>
+            {{ item.name }}
+          </v-list-item-title>
+          <v-spacer></v-spacer>
+          x {{ item.quantity }}
+          <v-list-item-action>
+            <v-btn icon color="red" @click="removeProduct(item.id)">
+              <v-icon>mdi-delete</v-icon>
+            </v-btn>
+          </v-list-item-action>
+        </v-list-item>
+      </div>
+
 
     </v-list-item-group>
   </v-list>
@@ -22,7 +30,9 @@
 
   <div style="display: flex;flex-direction: row">
     <h4 style="display: flex;align-items: flex-end;color:grey;font-weight: lighter">Total: </h4>
-    <h1>14,80 €</h1>
+    <h1> {{ cartData.reduce((accumulator, object) => {
+      return accumulator + object.unitPrice * object.quantity;
+    }, 0) }} €</h1>
   </div>
   <a  class="button3">Valider votre panier  <v-icon
       dark
@@ -35,9 +45,20 @@
 
 </template>
 
-<script>
+<script lang="ts">
 export default {
-  name: "CartItems.vue"
+  name: "CartItems.vue",
+  data: function (){
+    return {cartData : this.$store.state.cart.products}
+  },
+  methods: {
+    removeProduct: function (id: Number){
+      this.$store.commit('removeProduct', {id: id})
+    }
+  },
+  created() {
+    console.log(this.$store.state.cart);
+  }
 }
 </script>
 

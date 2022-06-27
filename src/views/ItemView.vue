@@ -74,6 +74,7 @@ export default {
           src: "../products/burger.png",
           content: "jaime les frites",
           price: 9.99,
+          id: 3,
         },
         {
           restauId: 1,
@@ -81,6 +82,7 @@ export default {
           src: "../products/nuggets.png",
           content: "jaime les frites",
           price: 9.99,
+          id: 2,
         },
         {
           restauId: 1,
@@ -88,6 +90,7 @@ export default {
           src: "../products/big mac.png",
           content: "jaime les frites",
           price: 9.99,
+          id: 1,
         },
         {
           restauId: 2,
@@ -95,6 +98,7 @@ export default {
           src: "../products/doublesteakhouse.jpeg",
           content: "jaime les frites",
           price: 9.99,
+          id: 4,
         },
         {
           restauId: 2,
@@ -102,6 +106,7 @@ export default {
           src: "../products/longchicken.jpeg",
           content: "jaime les frites",
           price: 9.99,
+          id: 5,
         },
         {
           restauId: 2,
@@ -109,6 +114,7 @@ export default {
           src: "../products/bigKing.jpeg",
           content: "jaime les frites",
           price: 9.99,
+          id: 6,
         },
         {
           restauId: 3,
@@ -116,6 +122,7 @@ export default {
           src: "../products/californiaMix.jpeg",
           content: "jaime les frites",
           price: 9.99,
+          id: 7,
         },
         {
           restauId: 3,
@@ -123,6 +130,7 @@ export default {
           src: "../products/loveboxsaumon.jpeg",
           content: "jaime les frites",
           price: 9.99,
+          id: 8,
         },
       ]
     }
