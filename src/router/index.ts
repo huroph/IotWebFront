@@ -11,9 +11,10 @@ const router = createRouter({
     {path: '/register', name: 'RegisterView', component: () => import('../views/RegisterView.vue')},
     {path: '/menu/:restauId', name:'menuByRestauId', component: () => import('@/views/ItemView.vue') },
     {path: '/Restaurants/:categoryId', name:'RestauBycategoryId', component: () => import('@/views/RestaurantsView.vue') },
-    {path: '/LoginPro',name: 'LoginProView',component: () => import('../views/LoginProView.vue')},
-    {path: '/editAccount',name: 'editAccount',component: () => import('../views/EditAccountView.vue')},
-    {path: '/editPassword',name: 'editPassword',component: () => import('../views/EditPasswordView.vue')},
+    {path: '/LoginPro',name: 'LoginProView', component: () => import('../views/LoginProView.vue')},
+    {path: '/editAccount',name: 'editAccount', component: () => import('../views/EditAccountView.vue')},
+    {path: '/editPassword',name: 'editPassword', component: () => import('../views/EditPasswordView.vue')},
+    {path: '/deleteAccount',name: 'deleteAccount', component: () => import('../views/DeleteAccountView.vue')},
 
 
 

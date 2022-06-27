@@ -105,8 +105,7 @@ export default {
             text: response.data
           });
           if (response.success){
-            await store.dispatch('loginUser', result.data.user);
-            router.push("/")
+            await this.$router.push("/login")
           }
         });
       } else {

@@ -21,7 +21,9 @@
         > <v-icon >mdi-cart</v-icon>
           <v-badge
               color="error"
-              content="1"
+              :content="cartData.reduce((accumulator, object) => {
+        return accumulator + object.quantity;
+      }, 0)"
           ></v-badge>
         </v-btn>
       </div>
@@ -73,10 +75,13 @@ import NotLoggedSide from "@/components/organism/header/NotLoggedSide.vue";
 
 export default {
   components: {CartItems, NotLoggedBtn, LoggedBtn, NotLoggedSide, LoggedSide},
-  data: () => ({
+  data: function (){
+    return{
     drawer: false,
     cartDrawer: false,
-  }),
+    cartData: this.$store.state.cart.products,
+  }
+  },
   computed: mapState({
     isLoggedIn: state => state.token.isLogged,
   }),

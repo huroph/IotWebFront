@@ -28,6 +28,9 @@ export default {
       },{
         name: "Modifier mon mot de passe",
         path: "/editPassword"
+      },{
+        name: "Supprimer mon compte",
+        path: "/deleteAccount"
       }
     ]
   })

@@ -11,7 +11,7 @@ export class RegisterService extends HttpService {
     }
     async registerUser(payload: any, store: Store<any>, router: Router) {
         try {
-            const ret = await this.http.post<{ user: User }>('auth/register', payload);
+            const ret = await this.http.post<{ data: User }>('user/register', payload);
             return {data: "Inscription reussie", code: ret.status, success: true};
         }catch (e: any) {
             if (!e.response) {
@@ -20,7 +20,7 @@ export class RegisterService extends HttpService {
                 return {data: 'Internal server error', code: 500, success: false};
             }
             redirect(e.response.status, store, router);
-            return {data: e.response.data.message, code: e.response.status, success: false};
+            return {data: e.response.data.data.pop().message, code: e.response.status, success: false};
         }
     }
 }

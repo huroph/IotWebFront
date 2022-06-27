@@ -1,22 +1,12 @@
 <template>
   <div class="container">
     <div class="box">
-      <form @submit="submit">
-        <span class="text-center">login</span>
-        <div class="input-container">
-          <input type="text" required="" name="email" v-model="email"/>
-          <label>Email</label>
-        </div>
+      <span class="text-center">Vous allez supprimer votre compte !</span>
 
-        <div class="input-container">
-          <input type="password" required="" name="password" v-model="password"/>
-          <label>Mot de passe </label>
-        </div>
-        <div class="bottom-container">
-          <button type="submit" class="btn">submit</button>
-        </div>
+      <div class="bottom-container">
+        <button type="submit" class="btn" @click="deleteAccount">submit</button>
+      </div>
 
-      </form>
     </div>
   </div>
 
@@ -25,7 +15,8 @@
 
 <script>
 
-import {LoginService} from "../services/loginService";
+
+import {EditAccountService} from "../services/editAccountService";
 
 export default {
   data: () => ({
@@ -33,37 +24,24 @@ export default {
     password: '',
   }),
   created() {
-    if (this.$store.state.token.isLogged){
-      this.$router.push("/")
+    if (!this.$store.state.token.isLogged){
+      this.$router.push("/login")
     }
-
   },
   methods: {
-    validate () {
-      this.$refs.form.validate()
-    },
-    reset () {
-      this.$refs.form.reset()
-    },
-    resetValidation () {
-      this.$refs.form.resetValidation()
-    },
-    submit (e) {
+    async deleteAccount (e) {
       e.preventDefault()
-      if (true) {
-
-        const result = new LoginService().loginUser(this.email, this.password, this.$store, this.$router);
-        result.then(response => {
-          console.log(response);
-          this.$swal({
-            icon: response.success ? "success" : "error",
-            text: response.data
-          });
-          if (response.success){
-            this.$router.push("/")
-          }
-        });
+      const response = await new EditAccountService().deleteUser(this.$store, this.$router)
+      console.log(response);
+      await this.$swal({
+        icon: response.success ? "success" : "error",
+        text: response.data
+      })
+      if (response.success){
+        await this.$store.dispatch('logoutUser')
+        await this.$router.push("/login")
       }
+
     },
   },
 }

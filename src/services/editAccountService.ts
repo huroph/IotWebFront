@@ -45,4 +45,19 @@ export class EditAccountService extends HttpService {
             return {data: e.response.data.data.pop().message, code: e.response.status, success: false};
         }
     }
+    async deleteUser(store: Store<any>, router: Router) {
+        try {
+            await this.http.post<{ data: User }>('transaction/DU', {});
+            return {data: "Compte supprimé !", code: 200, success: true};
+        } catch (e: any) {
+            console.log(e);
+            if (!e.response) {
+                console.log(e);
+                redirect("500", store, router);
+                return {data: 'Internal server error', code: 500, success: false};
+            }
+            redirect(e.response.status, store, router);
+            return {data: e.response.data.data.pop().message, code: e.response.status, success: false};
+        }
+    }
 }
