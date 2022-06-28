@@ -5,17 +5,17 @@
        <div class="top">
          <img src="add-icon.svg" alt="Paris" class="center">
        </div>
-       <div>
+
          <a>Ajouter un produit</a>
-       </div>
+
      </div>
      <div class="verticalLine">
      </div>
      <div class="editProduct">
        <div class="top">
-         <img style="margin-top: -20px" src="edit-logo.svg" alt="Paris" class="center">
+         <img  src="edit-logo.svg" alt="Paris" class="center">
        </div>
-      <div style="margin-top: 20px">
+      <div >
         <a >Editer un produit</a>
       </div>
      </div>
@@ -66,17 +66,33 @@ a{
 
 }
 .addProduct{
-  border: solid 1px red;
+
   width: 50%;
   text-align: center;
   height: 200px;
   margin: 5px;
   border-radius: 25px;
+
+}
+
+
+.addProduct:hover{
+  background-color: rgba(127, 120, 120, 0.5); ;
+  border-radius: 25px;
+  cursor: pointer;
+}
+.editProduct:hover{
+  background-color: rgba(127, 120, 120, 0.5); ;
+  border-radius: 25px;
+  cursor: pointer;
 }
 .editProduct{
+
   width: 50%;
   text-align: center;
-
+  height: 200px;
+  margin: 5px;
+  border-radius: 25px;
 }
 .center {
   display: block;
