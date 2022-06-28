@@ -13,16 +13,35 @@
 <script lang="ts">
 export default {
   name: "NotLoggedSide",
-  data: () => ({
-    links: [
+  data: function () {
+    const restauLinks = [
       {
-        name: "Créez un compte professionnel",
-        path: "/loginPro"
+        name: "Modifier les produits",
+        path: "/productEdit"
+      }
+    ]
+    const userLinks = [
+      {
+        name: "Vous etes restaurateur ?",
+        path: "/createRestaurant"
       },
       {
-        name: "Devenir livreur",
+        name: "Devenir livreur ?",
         path: "/register"
-      },{
+      },
+      {
+        name: "Mes commandes",
+        path: "/user/orders"
+      }
+    ]
+    const deliverLinks = [
+      {
+        name: "Mes livraisons",
+        path: "/user/delivery"
+      }
+    ]
+    const publicLinks = [
+      {
         name: "Modifier mon compte",
         path: "/editAccount"
       },{
@@ -31,9 +50,33 @@ export default {
       },{
         name: "Supprimer mon compte",
         path: "/deleteAccount"
+      },{
+        name: "Déconnexion",
+        path: "/logout"
       }
     ]
-  })
+    const role = this.$store.state.user.role
+    switch (role) {
+      case "restau":
+        return {
+          links: restauLinks
+        }
+      case "deliverer":
+        return {
+          links: deliverLinks.concat(publicLinks)
+        }
+      case "client":
+        return {
+          links: userLinks.concat(publicLinks)
+        }
+      default:
+        return {
+          links: publicLinks
+        }
+    }
+
+
+  }
 }
 </script>
 

@@ -16,8 +16,23 @@
 
 </template>
 
-<script setup lang="ts">
+<script lang="ts">
 import slider from "../components/molecules/slider.vue";
+export default {
+  name: "OrderInfoView",
+  components: {
+    slider
+  },
+  data: () => ({
+
+  }),
+  methods: {
+
+  },
+  beforeCreate() {
+
+  }
+}
 </script>
 
 <style scoped>

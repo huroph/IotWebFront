@@ -12,27 +12,27 @@
           <input type="text" required=""/>
           <label>Addresse</label>
         </div>
-        <div class="container-row">
-          <div class="input-container" style="width: 150px!important">
-            <input type="text" required=""/>
-            <label>Nom de famille </label>
-          </div>
-          <div class="input-container" style="width: 150px!important;padding-left: 5px">
-            <input type="text" required=""/>
-            <label>Prénom </label>
-          </div>
-        </div>
-        <div class="input-container" >
-          <input type="text" required=""/>
-          <label>Prénom </label>
-        </div>
-        <div class="input-container" >
-          <input type="text" required=""/>
-          <label>Email </label>
-        </div>
         <div class="input-container" >
           <input type="text" required=""/>
           <label>Téléphone </label>
+        </div>
+        <div class="input-container" >
+          <input type="text" required=""/>
+          <label>IMG </label>
+        </div>
+        <div class="input-container" >
+          <input type="text" required=""/>
+          <label>Frais de livraison </label>
+        </div>
+        <div class="" >
+          <select>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+          </select>
+          <label>Categorie</label>
         </div>
         <div class="input-container" >
           <input type="text" required=""/>
