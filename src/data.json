@@ -44,11 +44,7 @@
       "category": "all",
       "icon": "categories/top_eats.png"
     },
-    {
-      "id": 1,
-      "category": "alcohol",
-      "icon": "categories/alcohol.png"
-    },
+
     {
       "id": 2,
       "category": "american",
@@ -59,16 +55,7 @@
       "category": "burger",
       "icon": "categories/burger.png"
     },
-    {
-      "id": 4,
-      "category": "convenience",
-      "icon": "categories/convenience.png"
-    },
-    {
-      "id": 5,
-      "category": "deals",
-      "icon": "categories/deals.png"
-    },
+
     {
       "id": 6,
       "category": "french",
