@@ -31,7 +31,7 @@ export default {
       },
       {
         name: "Mes commandes",
-        path: "/user/orders"
+        path: "/user/orderdetails"
       }
     ]
     const deliverLinks = [

@@ -2,7 +2,7 @@
   <div class="container">
     <div class="box">
       <form @submit="submit">
-        <span class="text-center">Ajouter un produit</span>
+        <span class="text-center">{{name}}</span>
         <div class="input-container">
           <input type="text" required="" name="email" v-model="ProductName"/>
           <label>Nom du produit</label>
@@ -36,7 +36,12 @@
 
 <script>
 export default {
-  name: "AddProductView.vue"
+  name: "AddProductView.vue",
+  data() {
+    return {
+      name:"Ajouter un produit"
+    }
+  }
 }
 </script>
 
