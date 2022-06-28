@@ -14,6 +14,12 @@
       <v-text-field hide-details filled label="Prepend inner" prepend-inner-icon="mdi-map-marker" rounded>
       </v-text-field>
       <v-spacer></v-spacer>
+      <router-link to="/productEdit">
+        <v-btn style="text-decoration: none">
+          Edition des produits
+        </v-btn>
+      </router-link>
+
       <div class="my-2">
         <v-btn
             @click="cartDrawer = true"

@@ -8,7 +8,7 @@
       </v-list-item>
       <div v-for="item in cartData">
         <v-list-item>
-          <v-img class="img" src="/products/burger.png" >
+          <v-img class="img" :src=item.src >
           </v-img>
           <v-list-item-title>
             {{ item.name }}
@@ -16,8 +16,8 @@
           <v-spacer></v-spacer>
           x {{ item.quantity }}
           <v-list-item-action>
-            <v-btn icon color="red" @click="removeProduct(item.id)">
-              <v-icon>mdi-delete</v-icon>
+            <v-btn style="margin: 5px" width="30" height="30" icon color="red" @click="removeProduct(item.id)">
+              <v-icon size="20">mdi-delete</v-icon>
             </v-btn>
           </v-list-item-action>
         </v-list-item>
@@ -34,12 +34,15 @@
       return accumulator + object.unitPrice * object.quantity;
     }, 0) }} €</h1>
   </div>
-  <a  class="button3">Valider votre panier  <v-icon
-      dark
-      right
-  >
-    mdi-checkbox-marked-circle
-  </v-icon></a>
+  <router-link to="/orderInfo">
+    <a  class="button3">Valider votre panier  <v-icon
+        dark
+        right
+    >
+      mdi-checkbox-marked-circle
+    </v-icon></a>
+  </router-link>
+
 </div>
 
 

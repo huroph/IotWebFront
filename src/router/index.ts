@@ -15,7 +15,8 @@ const router = createRouter({
     {path: '/editAccount',name: 'editAccount', component: () => import('../views/EditAccountView.vue')},
     {path: '/editPassword',name: 'editPassword', component: () => import('../views/EditPasswordView.vue')},
     {path: '/deleteAccount',name: 'deleteAccount', component: () => import('../views/DeleteAccountView.vue')},
-    {path: '/OrderInfo',name: 'OrderInfo', component: () => import('../views/OrderInfoView.vue')},
+    {path: '/orderInfo',name: 'orderInfo', component: () => import('../views/OrderInfoView.vue')},
+    {path: '/productEdit',name: 'productEdit', component: () => import('../views/ProductEditView.vue')},
 
 
 

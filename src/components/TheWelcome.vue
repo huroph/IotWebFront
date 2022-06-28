@@ -11,9 +11,6 @@
             <a class="textBtn">Trouver un restaurant</a>
           </button>
           </router-link>
-
-
-
         </div>
       </div>
     </div>
