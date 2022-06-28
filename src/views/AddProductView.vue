@@ -2,15 +2,28 @@
   <div class="container">
     <div class="box">
       <form @submit="submit">
-        <span class="text-center">login</span>
+        <span class="text-center">Ajouter un produit</span>
         <div class="input-container">
-          <input type="text" required="" name="email" v-model="email"/>
-          <label>Email</label>
+          <input type="text" required="" name="email" v-model="ProductName"/>
+          <label>Nom du produit</label>
+        </div>
+        <div class="input-container">
+          <input type="text" required="" name="price" v-model="ProductPrice"/>
+          <label>prix unitaire </label>
+        </div>
+        <div class="input-container">
+          <textarea type="text" required="" name="description" v-model="ProductDesc"/>
+          <label>Décrivez votre produit </label>
         </div>
 
-        <div class="input-container">
-          <input type="password" required="" name="password" v-model="password"/>
-          <label>Mot de passe </label>
+        <div class="importimg">
+          <label style="color: #eaeaea" for="inputTag">
+            Select Image <br/>
+            <i class="fa fa-2x fa-camera" style="color: #eaeaea;margin-left: 35%;cursor: pointer"></i>
+            <input class="input-file" id="inputTag" type="file" accept="image/png, image/jpeg">
+            <br/>
+            <span id="imageName"></span>
+          </label>
         </div>
         <div class="bottom-container">
           <button type="submit" class="btn">submit</button>
@@ -29,7 +42,15 @@ export default {
 
 <style scoped>
 
+.importimg{
+  display: flex;
+  justify-content: center;
+}
 
+.input-file{
+  display:none;
+
+}
 .container{
   width: 100%;
   background-image: url("../assets/bgUbereat.jpg");
@@ -88,7 +109,14 @@ body{
   font-size:16px;
   color:#fff;
 }
-.input-container input:focus{
+textarea{
+  color: #eaeaea;
+  padding:20px 0 10px 0;
+  border:none;
+  outline:none;
+  width: 500px;
+}
+.input-container input:focus {
   border:none;
   outline:none;
   border-bottom:1px solid #e74c3c;

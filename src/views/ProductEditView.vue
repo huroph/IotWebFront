@@ -1,24 +1,24 @@
 <template>
- <div class="container">
-   <div class="subContainer">
+ <div class="containerb">
+   <div class="subContainerb">
      <router-link to="/addProduct">
-       <div class="addProduct">
-         <div class="top">
-           <img src="add-icon.svg" alt="Paris" class="center">
+       <div class="addProductb">
+         <div class="topb">
+           <img src="add-icon.svg" alt="Paris" class="centerb">
          </div>
-         <a>Ajouter un produit</a>
+         <h1 class="bibo">Ajouter un produit</h1>
        </div>
      </router-link>
 
      <div class="verticalLine">
      </div>
      <router-link to="/editProduct">
-       <div class="editProduct">
-         <div class="top">
-           <img  src="edit-logo.svg" alt="Paris" class="center">
+       <div class="editProductb">
+         <div class="topb">
+           <img  src="edit-logo.svg" alt="Paris" class="centerb">
          </div>
          <div >
-           <a >Editer un produit</a>
+           <h1 class="bibo">Editer un produit</h1>
          </div>
        </div>
      </router-link>
@@ -36,11 +36,14 @@ export default {
 
 <style scoped>
 
-.top{
+.topb{
   height: 80%;
   display: flex;
 }
-.container{
+router-link ::v-deep{
+  text-decoration: none;
+}
+.containerb{
 
   width: 100%;
   background-image: url("../assets/bgUbereat.jpg");
@@ -50,7 +53,7 @@ export default {
   background-size: cover;
   position: relative;
 }
-.subContainer{
+.subContainerb{
 background-color: rgba(255, 255, 255, 0.9);
   border-radius: 25px;
   position: absolute;
@@ -64,13 +67,15 @@ background-color: rgba(255, 255, 255, 0.9);
 
 }
 
-a{
+.bibo{
   height: 20%;
   font-size: 20px;
   font-family: "Bambou Sans";
+  text-decoration: none;
+
 
 }
-.addProduct{
+.addProductb{
 
   width: 50%;
   text-align: center;
@@ -81,17 +86,17 @@ a{
 }
 
 
-.addProduct:hover{
+.addProductb:hover{
   background-color: rgba(127, 120, 120, 0.5); ;
   border-radius: 25px;
   cursor: pointer;
 }
-.editProduct:hover{
+.editProductb:hover{
   background-color: rgba(127, 120, 120, 0.5); ;
   border-radius: 25px;
   cursor: pointer;
 }
-.editProduct{
+.editProductb{
 
   width: 50%;
   text-align: center;
@@ -99,7 +104,7 @@ a{
   margin: 5px;
   border-radius: 25px;
 }
-.center {
+.centerb {
   display: block;
   margin-left: auto;
   margin-right: auto;

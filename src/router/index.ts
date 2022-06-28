@@ -17,7 +17,7 @@ const router = createRouter({
     {path: '/deleteAccount',name: 'deleteAccount', component: () => import('../views/DeleteAccountView.vue')},
     {path: '/orderInfo',name: 'orderInfo', component: () => import('../views/OrderInfoView.vue')},
     {path: '/productEdit',name: 'productEdit', component: () => import('../views/ProductEditView.vue')},
-    {path: '/add',name: 'productEdit', component: () => import('../views/ProductEditView.vue')},
+    {path: '/addproduct',name: 'addproduct', component: () => import('../views/AddProductView.vue')},
 
 
 
