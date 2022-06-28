@@ -11,7 +11,7 @@
       </router-link>
 
       <v-spacer></v-spacer>
-      <v-text-field hide-details filled label="Prepend inner" prepend-inner-icon="mdi-map-marker" rounded>
+      <v-text-field hide-details filled label="Livraison à CESI AIX" prepend-inner-icon="mdi-map-marker" rounded disabled>
       </v-text-field>
       <v-spacer></v-spacer>
 

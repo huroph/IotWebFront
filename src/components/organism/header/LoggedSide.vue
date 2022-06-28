@@ -59,7 +59,7 @@ export default {
     switch (role) {
       case "restau":
         return {
-          links: restauLinks
+          links: restauLinks.concat(publicLinks)
         }
       case "deliverer":
         return {

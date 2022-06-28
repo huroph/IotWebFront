@@ -88,6 +88,9 @@ export const store = createStore({
             }catch (e) {
                 console.log(e);
             }
+        },
+        emptyCart(state, payload){
+            state.cart.products = [];
         }
 
 
@@ -105,6 +108,7 @@ export const store = createStore({
         logoutUser(context, payload){
             context.commit("emptyUser",payload)
             context.commit("emptyToken", payload);
+            context.commit("emptyCart", payload);
         },
     },
 })
