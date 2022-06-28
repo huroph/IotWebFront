@@ -19,6 +19,7 @@
         <v-btn
             @click="cartDrawer = true"
             icon
+            v-if="isLoggedIn"
         > <v-icon >mdi-cart</v-icon>
           <v-badge
               color="error"
