@@ -20,8 +20,8 @@ export default {
     return {
       slider1: 1,
       tickLabels: {
-        0: 'On prends votre commande',
-        1: 'En cour de Préparation',
+        0: 'On prend votre commande',
+        1: 'En cour de préparation',
         2: 'En cour de livraison',
         3: 'livré !',
       },

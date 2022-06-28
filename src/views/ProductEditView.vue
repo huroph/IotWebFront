@@ -1,24 +1,27 @@
 <template>
  <div class="container">
    <div class="subContainer">
-     <div class="addProduct">
-       <div class="top">
-         <img src="add-icon.svg" alt="Paris" class="center">
-       </div>
-
+     <router-link to="/addProduct">
+       <div class="addProduct">
+         <div class="top">
+           <img src="add-icon.svg" alt="Paris" class="center">
+         </div>
          <a>Ajouter un produit</a>
+       </div>
+     </router-link>
 
-     </div>
      <div class="verticalLine">
      </div>
-     <div class="editProduct">
-       <div class="top">
-         <img  src="edit-logo.svg" alt="Paris" class="center">
+     <router-link to="/editProduct">
+       <div class="editProduct">
+         <div class="top">
+           <img  src="edit-logo.svg" alt="Paris" class="center">
+         </div>
+         <div >
+           <a >Editer un produit</a>
+         </div>
        </div>
-      <div >
-        <a >Editer un produit</a>
-      </div>
-     </div>
+     </router-link>
    </div>
 
 
@@ -38,6 +41,7 @@ export default {
   display: flex;
 }
 .container{
+
   width: 100%;
   background-image: url("../assets/bgUbereat.jpg");
   background-color: #cccccc;
@@ -47,7 +51,8 @@ export default {
   position: relative;
 }
 .subContainer{
-
+background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 25px;
   position: absolute;
   display: flex;
   flex-direction: row;

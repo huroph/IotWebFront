@@ -3,7 +3,7 @@
 <div class="container">
   <img src="biker.gif" alt="Paris" class="center">
   <h1 class="title">
-    Votre Commande est bientot prête !
+    Votre commande est bientot prête !
   </h1>
 
   <div class="slider-container">
