@@ -16,14 +16,17 @@ export default {
   data: function () {
     const restauLinks = [
       {
+        name: "Modifier mon restaurant",
+        path: "/restaurant/edit"
+      },{
         name: "Modifier les produits",
         path: "/productEdit"
-      }
+      },
     ]
     const userLinks = [
       {
         name: "Vous etes restaurateur ?",
-        path: "/createRestaurant"
+        path: "/restaurant/create"
       },
       {
         name: "Devenir livreur ?",
@@ -38,6 +41,12 @@ export default {
       {
         name: "Mes livraisons",
         path: "/user/delivery"
+      }
+    ]
+    const adminLinks = [
+      {
+        name: "Liste des restaurants",
+        path: "/restaurant/list"
       }
     ]
     const publicLinks = [
@@ -68,6 +77,10 @@ export default {
       case "client":
         return {
           links: userLinks.concat(publicLinks)
+        }
+      case "techServ":
+        return {
+          links: adminLinks.concat(publicLinks)
         }
       default:
         return {

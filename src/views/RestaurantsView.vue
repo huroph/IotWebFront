@@ -1,33 +1,34 @@
-<script>
+<script lang="ts">
 import categoriesItem from "@/components/categoriesItem.vue";
-import sourceData from "@/data.json"
 import RestauItem from "@/components/molecules/cards/RestauItem.vue";
+import {RestaurantService} from "../services/restaurant.service";
 
 export default {
   components: {RestauItem, categoriesItem},
-  beforeMount() {
-    this.restaurants = sourceData['restaurants'];
-    this.filteredRestaurants = this.restaurants;
+  mounted: async function() {
+    try {
+      const result = await new RestaurantService().get({request: 'getAll'}, this.$store, this.$router);
+      console.log(result);
+      if (result.success){
+        this.restaurants = result.data
+      }else{
+        this.restaurants = []
+      }
+      this.filteredRestaurants = this.restaurants;
+    }catch (e) {
+      console.log(e);
+    }
   },
   methods: {
     setCategoryId($event) {
       this.filteredRestaurants = this.restaurants.filter(restau => {
+        console.log(restau)
         if ($event.data === '*') return restau;
-        else if (restau.categoryId === $event.data) return restau;
+        else if (restau.restaurantCategory._id === $event.data) return restau;
       });
-
     },
   },
   computed: {
-    cardsData() {
-      const cardData = [];
-      this.cards.forEach((card) => {
-        if (card.categoryId === this.destinationId) cardData.push(card);
-        console.log(cardData)
-      });
-      return cardData
-
-    }
   },
   data() {
     return {

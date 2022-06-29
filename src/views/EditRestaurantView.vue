@@ -3,7 +3,7 @@
 
     <div class="box">
       <form @submit="createRestaurant">
-        <span class="text-center">Lancez-vous</span>
+        <span class="text-center">Modifier Les informations de votre restaurant</span>
         <div class="input-container">
           <input type="text" v-model="name"/>
           <label>Nom de l'établissement</label>
@@ -58,6 +58,7 @@
 
 <script lang="ts">
 import {RestaurantService} from "../services/restaurant.service";
+import {RestaurantCategory} from "@/models/restaurantCategory.model";
 
 export default {
   data: () => ({
@@ -82,19 +83,31 @@ export default {
     ],
     disabled: false,
   }),
-  mounted: async function() {
+  mounted: async function(){
     // get categories
     let result = await new RestaurantService().getCategories({}, this.$store, this.$router);
     console.log(result);
-    if (result.success) {
+    if (result.success){
       this.categories = result.data.map(item => {
         return {
           key: item.name,
           value: item._id,
         }
       })
-    } else {
+    }else{
       this.categories = []
+    }
+    // get client restaurant infos
+    result = await new RestaurantService().get({request: "getHis"}, this.$store, this.$router);
+    console.log(result);
+    if (result.success){
+      this.delivery_fee = 2
+      this.siret = result.data.siret
+      this.name = result.data.name
+      this.desc = result.data.desc
+      this.phone = result.data.phone
+      this.address = result.data.address
+      this.select = {key: result.data.restaurantCategory.name, value:result.data.restaurantCategory._id}
     }
   },
   methods: {
@@ -117,7 +130,7 @@ export default {
         reader.readAsDataURL(this.img[0])
         reader.onload = async function () {
           payload["img"] = reader.result;
-          const response = await new RestaurantService().createRestaurant(payload, th.$store, th.$router);
+          const response = await new RestaurantService().editRestaurant(payload, th.$store, th.$router);
           th.$swal({
             icon: response.success ? "success" : "error",
             text: response.data

@@ -7,7 +7,7 @@
       <h3 style="font-weight:normal!important;">Menu</h3>
     </div>
     <div class="grid-container">
-      <ProductItem :cards="cardsData"/>
+      <ProductItem :cards="cardsData" :restaurant-id="destinationId"/>
     </div>
   </div>
 </template>
@@ -42,14 +42,14 @@
 }
 
 </style>
-<script>
+<script lang="ts">
 
 import ProductItem from "../components/molecules/cards/productItem.vue";
 import MenueItems from "../components/molecules/cards/MenueItems.vue";
 import sourceData from "@/data.json"
 
 export default {
-  components: {ProductItem,},
+  components: {ProductItem},
   computed: {
     destinationId() {
       return parseInt(this.$route.params.restauId)
@@ -132,7 +132,7 @@ export default {
           price: 9.99,
           id: 8,
         },
-      ]
+      ],
     }
   }
 

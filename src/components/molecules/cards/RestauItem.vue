@@ -1,12 +1,16 @@
 <template>
   <div class="wrapper" v-for="item in restaurants" :key="item.name" :itemlist="item">
-    <div class="container" v-on:click="redirect(item.id)">
+    <div class="container" v-on:click="redirect(item._id)">
       <v-img max-height="150"
              width="2000"
-             :src=item.background>
+             :src="item.img">
       </v-img>
       <div class="bottom">
-          <h1>{{ item.name }}</h1>
+          <h1>{{ item.name }}  <v-badge
+              color="info"
+              :content="item.restaurantCategory.name"
+              floating
+          ></v-badge></h1>
         <div class="row">
           <div class="left" style="margin-top: 1px;margin-right: 2px ">
             <v-img max-height="10"
@@ -14,22 +18,19 @@
                    src="./icon_delevry.png">
             </v-img>
           </div>
-          <p>{{ item.delivery_charges }} frais de livraison</p>
-          <p style="font-size: small;color: #555555 ;margin-top: 3px;margin-left: 5px">{{ item.time_to_delivery }}</p>
+          <p>{{ item.deliveryCharges }}€ frais de livraison</p>
         </div>
       </div>
     </div>
   </div>
 </template>
-<script>
-import router from "@/router";
-import sourceData from "@/data.json"
+<script lang="ts">
 
 export default {
   props: ['restaurants'],
   methods: {
     redirect(restauId) {
-      router.push({name: 'menuByRestauId', params: {restauId: restauId}});
+      this.$router.push({name: 'menuByRestauId', params: {restauId: restauId}});
     }
   }
 };

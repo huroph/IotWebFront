@@ -2,7 +2,14 @@ import App from '../App.vue'
 import {createStore} from 'vuex'
 import {createApp} from "vue";
 import type {Product} from "@/models/product.model";
-
+export class cartContent {
+    products: Product[];
+    restaurantId: Number;
+    constructor(json: any) {
+        this.products = json.products;
+        this.restaurantId = json.restaurantId;
+    }
+}
 export const store = createStore({
     state: {
 
@@ -18,9 +25,7 @@ export const store = createStore({
             address: "",
             role: "",
         },
-        cart:{
-            products: Array<Product>(),
-        }
+        cart: Array<cartContent>()
 
     },
     mutations: {
@@ -58,15 +63,25 @@ export const store = createStore({
                 );
             }
         },
-        addToCart(state, payload: Product){
+        addToCart(state, payload: cartContent){
+            console.log(payload.restaurantId);
             try {
+                const cart = state.cart.find(cart => cart.restaurantId === payload.restaurantId);
                 // check if the product is already in the cart
-                if(state.cart.products.find(product => product.id === payload.id)){
-                    // if it is, increment the quantity
-                    // @ts-ignore
-                    state.cart.products.find(product => product.id === payload.id).quantity++;
+                if(cart){
+                    console.log("cart found");
+                    if(cart.products.find(product => product.id === payload.products[0].id)){
+                        console.log("product found");
+                        // if it is, increment the quantity
+                        // @ts-ignore
+                        cart.products.find(product => product.id === payload.products[0].id).quantity++;
+                    }else{
+                        console.log("product not found");
+                        cart.products.push(payload.products[0]);
+                    }
                 }else{
-                    state.cart.products.push(payload);
+                    console.log("cart not found");
+                    state.cart.push(new cartContent({restaurantId: payload.restaurantId, products: payload.products}));
                 }
             }catch (e) {
                 console.log(e);
@@ -90,7 +105,7 @@ export const store = createStore({
             }
         },
         emptyCart(state, payload){
-            state.cart.products = [];
+            state.cart = [];
         }
 
 

@@ -23,9 +23,9 @@
         > <v-icon >mdi-cart</v-icon>
           <v-badge
               color="error"
-              :content="cartData.reduce((accumulator, object) => {
+              :content="1/*cartData.reduce((accumulator, object) => {
         return accumulator + object.quantity;
-      }, 0)"
+      }, 0)*/"
           ></v-badge>
         </v-btn>
       </div>

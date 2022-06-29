@@ -3,16 +3,12 @@
   <div class="containers">
     <v-row v-for="card in cards" :key="card.title" :cols="card.cols" :x-id="card.id">
       <v-card class=" productCard">
-
-          <v-img :src="card.src"   style="position: relative" />
-
-
-
-
-        <v-btn class="close" @click="addToCart(card.id, card.price, card.title, card.src, $event)"><p style="color: white">+</p></v-btn>
-        <v-card-title h5 class="title">{{card.title}}</v-card-title>
-        <v-card-subtitle style="word-break: break-word;" > {{card.content}}</v-card-subtitle>
-        <v-card-subtitle class="title" style="margin-bottom: 5px" >{{card.price}} €</v-card-subtitle>
+        <v-img :src="card.src"   style="position: relative" >
+          <v-btn class="close" @click="addToCart(card.id, card.price, card.title, card.src, $event)"><p style="color: white">+</p></v-btn>
+        </v-img>
+        <v-card-title h5 class="title">{{card.title}}
+        </v-card-title>
+        <v-card-subtitle class="title" style="margin-bottom: 5px" >{{card.price}}</v-card-subtitle>
       </v-card>
     </v-row>
   </div>
@@ -23,10 +19,6 @@
 
 
 <style lang="scss" scoped>
-.v-responsive__sizer v-img__img v-img__img--contain::v-deep{
-  height: 160px;
-}
-
 .productCard {
 
   cursor: pointer;
@@ -71,16 +63,24 @@
 
 <script lang="ts">
 import {Product} from "@/models/product.model";
+import {cartContent} from "@/store/store";
 
 export default {
   name:"productItem",
   props:{
     cards: [],
+    restaurantId: {
+      type: Number,
+      required: true
+    }
   },
   methods:{
-    addToCart(id: Number, unitPrice: Number, name: String, src:String,e: any){
+    addToCart(id: Number, unitPrice: Number, name: String, src:String, e: any){
       console.log(id);
-      this.$store.commit("addToCart", new Product({id: id, unitPrice: unitPrice, name: name, src: src}));
+      console.log(this.restaurantId);
+      //this.$store.commit('emptyCart')
+      this.$store.commit("addToCart", new cartContent({restaurantId: this.restaurantId, products:[new Product({id: id, unitPrice: unitPrice, name: name, src:src})]}) );
+
     },
   },
   created() {

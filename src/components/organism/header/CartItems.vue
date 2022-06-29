@@ -1,12 +1,12 @@
 <template>
   <v-list class="cart" nav dense >
-    <v-list-item-group v-model="group" active-class="deep-purple--text text--accent-4" >
+    <v-list-item-group v-model="group" active-class="deep-purple--text text--accent-4" v-for="gg in cartData">
       <v-list-item >
         <v-list-item-title>
-          VOTRE PANIER
+          VOTRE PANIER {{gg.restaurantId}}
         </v-list-item-title>
       </v-list-item>
-      <div v-for="item in cartData">
+      <div v-for="item in gg.products">
         <v-list-item>
           <v-img class="img" :src="item.src" >
           </v-img>
@@ -22,6 +22,12 @@
           </v-list-item-action>
         </v-list-item>
       </div>
+      <div style="display: flex;flex-direction: row">
+        <h4 style="display: flex;align-items: flex-end;color:grey;font-weight: lighter">Total:  </h4>
+        <h1> {{ gg.products.reduce((accumulator, object) => {
+      return accumulator + object.unitPrice * object.quantity;
+    }, 0) }} €</h1>
+      </div>
 
 
     </v-list-item-group>
@@ -30,9 +36,9 @@
 
   <div style="display: flex;flex-direction: row">
     <h4 style="display: flex;align-items: flex-end;color:grey;font-weight: lighter">Total: </h4>
-    <h1> {{ cartData.reduce((accumulator, object) => {
+    <h1> {{ true /*cartData.reduce((accumulator, object) => {
       return accumulator + object.unitPrice * object.quantity;
-    }, 0) }} €</h1>
+    }, 0)*/ }} €</h1>
   </div>
   <router-link to="/orderInfo">
     <a  class="button3">Valider votre panier  <v-icon
@@ -52,7 +58,7 @@
 export default {
   name: "CartItems.vue",
   data: function (){
-    return {cartData : this.$store.state.cart.products}
+    return {cartData : this.$store.state.cart}
   },
   methods: {
     removeProduct: function (id: Number){
