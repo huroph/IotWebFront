@@ -72,7 +72,7 @@ export default {
           restauId: 1,
           title: "280 Original",
           src: "../products/burger.png",
-          content: "jaime les frites",
+          content: "jaime les fritesjaime le...",
           price: 9.99,
           id: 3,
         },

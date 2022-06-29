@@ -50,9 +50,15 @@ export default {
     <div class="nofoundRestau" v-if="filteredRestaurants.length===0">
       <h1>Nous n'avons pas trouvé de restaurant ...</h1>
     </div>
-    <div v-else class="grid-container">
-      <RestauItem :restaurants="filteredRestaurants"/>
+    <div  v-else >
+      <h1 class="title">Meilleur resultats </h1>
+
+      <div class="grid-container">
+
+        <RestauItem :restaurants="filteredRestaurants"/>
+      </div>
     </div>
+
   </div>
 
 </template>
@@ -79,9 +85,13 @@ export default {
 .nofoundRestau{
   color: grey;
   text-align:center;
-  align-content:center;
+  justify-content:center;
   height: 200px;
   display: flex;
+  padding-top: 10%;
+}
+.title{
+  margin: 20px;
 }
 
 </style>

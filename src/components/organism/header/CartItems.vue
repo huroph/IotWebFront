@@ -8,7 +8,7 @@
       </v-list-item>
       <div v-for="item in cartData">
         <v-list-item>
-          <v-img class="img" :src=item.src >
+          <v-img class="img" :src="item.src" >
           </v-img>
           <v-list-item-title>
             {{ item.name }}

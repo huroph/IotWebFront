@@ -33,11 +33,12 @@
 
 
 .homepage {
-
+  overflow: hidden;
+  position: fixed;
   width: 100%;
   background-image: url("../assets/bgUbereat.jpg");
   background-color: #cccccc;
-  height: 100vh;
+  height: 89vh;
   background-repeat: no-repeat;
   background-size: cover;
   position: relative;
@@ -59,7 +60,7 @@ input[type=text] {
 }
 
 .title {
-  top: 40%;
+  top: 30%;
   left: 1%;
   width: 1000px;
   height: auto;

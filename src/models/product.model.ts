@@ -10,6 +10,6 @@ export class Product {
         this.name = json.name;
         this.quantity = json.quantity||1;
         this.unitPrice = json.unitPrice||0;
-        this.src = json.src||null;
+        this.src = json.src||undefined;
     }
 }
