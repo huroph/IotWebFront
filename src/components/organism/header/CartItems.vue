@@ -11,7 +11,7 @@
           <v-img class="img" :src="item.src" >
           </v-img>
           <v-list-item-title>
-            {{ item.name }} : <v-badge color="info" :content="`${item.unitPrice } € x ${ item.quantity }`"> </v-badge>
+            {{ item.name }} : {{item.unitPrice }} € x {{ item.quantity }}
           </v-list-item-title>
           <v-spacer></v-spacer>
           {{ item.quantity * item.unitPrice }} €
@@ -42,14 +42,12 @@
       }, 0);
     }, 0) }} €</h1>
   </div>
-  <router-link to="/order/info">
-    <a  class="button3">Valider votre panier  <v-icon
+    <a  class="button3" @click="validateOrder">Valider votre panier  <v-icon
         dark
         right
     >
       mdi-checkbox-marked-circle
     </v-icon></a>
-  </router-link>
 
 </div>
 
@@ -57,6 +55,8 @@
 </template>
 
 <script lang="ts">
+import {OrderService} from "@/services/order.service";
+
 export default {
   name: "CartItems.vue",
   data: function (){
@@ -65,6 +65,42 @@ export default {
   methods: {
     removeProduct: function (id: Number, restaurantId: Number) {
       this.$store.commit('removeProduct', {id: id, restaurantId: restaurantId})
+    },
+    validateOrder: async function () {
+      const th = this
+      let payloads: any[] = []
+      let success = true
+
+      await this.$store.state.cart.forEach(
+          function (cart){
+                      const payload = {
+                        itemsId: [].concat.apply([], cart.products.map(function (product) {
+                          return Array(product.quantity).fill(product.id)
+                        })),
+                        restaurantId: cart.restaurantId
+                      };
+                      payloads.push(payload)
+                    }
+      )
+      for(let i=0; i<payloads.length; i++){
+        const payload = payloads[i];
+        const res = await new OrderService().validateOrder(payload, this.$store, this.$router);
+        if(!res.success){
+          success = false
+          break;
+        }
+      }
+      if (success){
+        this.$swal({
+          title: 'Succès',
+          text: 'Votre commande a été validée',
+          icon: 'success',
+          confirmButtonText: 'Ok'
+        })
+        this.$router.push("/order/list")
+      }
+
+      //
     }
   },
   created() {
