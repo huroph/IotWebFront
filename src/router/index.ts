@@ -6,19 +6,25 @@ const router = createRouter({
   routes: [
     {path: '/', name: 'home', component: HomeView },
     {path: '/about', name: 'about', component: () => import('../views/AboutView.vue') },
-    {path: '/restaurants', name: 'restaurantsView', component: () => import('../views/RestaurantsView.vue')},
     {path: '/login', name: 'LoginView', component: () => import('../views/LoginView.vue')},
     {path: '/register', name: 'RegisterView', component: () => import('../views/RegisterView.vue')},
-    {path: '/menu/:restauId', name:'menuByRestauId', component: () => import('@/views/ItemView.vue') },
-    {path: '/Restaurants/:categoryId', name:'RestauBycategoryId', component: () => import('@/views/RestaurantsView.vue') },
-    {path: '/editAccount',name: 'editAccount', component: () => import('../views/EditAccountView.vue')},
-    {path: '/editPassword',name: 'editPassword', component: () => import('../views/EditPasswordView.vue')},
-    {path: '/deleteAccount',name: 'deleteAccount', component: () => import('../views/DeleteAccountView.vue')},
-    {path: '/orderInfo',name: 'orderInfo', component: () => import('../views/OrderInfoView.vue')},
-    {path: '/productEdit',name: 'productEdit', component: () => import('../views/ProductEditView.vue')},
-    {path: '/addproduct',name: 'addproduct', component: () => import('../views/AddProductView.vue')},
+    //User
+    {path: '/user/edit',name: 'editAccount', component: () => import('../views/EditAccountView.vue')},
+    {path: '/user/editPwd',name: 'editPassword', component: () => import('../views/EditPasswordView.vue')},
+    {path: '/user/delete',name: 'deleteAccount', component: () => import('../views/DeleteAccountView.vue')},
     {path: '/user/orderdetails',name: 'orderdetails', component: () => import('../views/OrderDetailView.vue')},
+
+    //Order
+    {path: '/order/info',name: 'orderInfo', component: () => import('../views/OrderInfoView.vue')},
+    {path: '/order/info/:orderId',name: 'orderInfo', component: () => import('../views/OrderInfoView.vue')},
+    //Products
+    {path: '/product/edit',name: 'productEdit', component: () => import('../views/ProductEditView.vue')},
+    {path: '/product/list',name: 'lop', component: () => import('../views/product/ListOwnProductsView.vue')},
+    {path: '/product/add',name: 'addproduct', component: () => import('../views/product/AddProductView.vue')},
     // RESTAURANTS
+    {path: '/restaurants', name: 'restaurantsView', component: () => import('../views/RestaurantsView.vue')},
+    {path: '/restaurants/:categoryId', name:'RestauBycategoryId', component: () => import('@/views/RestaurantsView.vue') },
+    {path: '/menu/:restauId', name:'menuByRestauId', component: () => import('@/views/ItemView.vue') },
     {path: '/restaurant/list',name: 'rl', component: () => import('../views/ListRestaurantView.vue')},
     {path: '/restaurant/edit',name: 're', component: () => import('../views/EditRestaurantView.vue')},
     {path: '/restaurant/create',name: 'createRestaurant', component: () => import('../views/CreateRestaurantView.vue')},

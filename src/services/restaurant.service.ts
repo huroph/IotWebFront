@@ -1,7 +1,7 @@
 import {HttpService} from "@/services/http.service";
 import type {User} from "@/models/user.model";
 import type {Store} from "vuex";
-import {redirect} from "@/services/redirectService";
+import {redirectError} from "@/services/redirectService";
 import type {Router} from "vue-router";
 import type {Restaurant} from "@/models/restaurant.model";
 
@@ -32,11 +32,11 @@ export class RestaurantService extends HttpService {
             console.log(e);
             if (!e.response) {
                 console.log(e);
-                await redirect("500", store, router);
+                await redirectError(500, store, router);
                 return {data: 'Internal server error', code: 500, success: false};
             }
-            await redirect(e.response.status, store, router);
-            return {data: e.response.data.message, code: e.response.status, success: false};
+            await redirectError(e.response.status, store, router);
+            return {data: e.response.data.data.pop().message, code: e.response.status, success: false};
         }
     }
     async getCategories(payload: any, store: Store<any>, router: Router) {
@@ -47,11 +47,11 @@ export class RestaurantService extends HttpService {
             console.log(e);
             if (!e.response) {
                 console.log(e);
-                await redirect("500", store, router);
+                await redirectError(500, store, router);
                 return {data: 'Internal server error', code: 500, success: false};
             }
-            await redirect(e.response.status, store, router);
-            return {data: e.response.data.message, code: e.response.status, success: false};
+            await redirectError(e.response.status, store, router);
+            return {data: e.response.data.data.pop().message, code: e.response.status, success: false};
         }
     }
 
@@ -64,11 +64,11 @@ export class RestaurantService extends HttpService {
             console.log(e);
             if (!e.response) {
                 console.log(e);
-                await redirect("500", store, router);
+                await redirectError(500, store, router);
                 return {data: 'Internal server error', code: 500, success: false};
             }
             console.log(e.response);
-            await redirect(e.response.status, store, router);
+            await redirectError(e.response.status, store, router);
             return {data: e.response.data.data.pop().message, code: e.response.status, success: false};
         }
     }
@@ -81,11 +81,11 @@ export class RestaurantService extends HttpService {
             console.log(e);
             if (!e.response) {
                 console.log(e);
-                await redirect("500", store, router);
+                await redirectError(500, store, router);
                 return {data: 'Internal server error', code: 500, success: false};
             }
             console.log(e.response);
-            await redirect(e.response.status, store, router);
+            await redirectError(e.response.status, store, router);
             return {data: e.response.data.data.pop().message, code: e.response.status, success: false};
         }
     }
@@ -98,11 +98,11 @@ export class RestaurantService extends HttpService {
             console.log(e);
             if (!e.response) {
                 console.log(e);
-                await redirect("500", store, router);
+                await redirectError(500, store, router);
                 return {data: 'Internal server error', code: 500, success: false};
             }
             console.log(e.response);
-            await redirect(e.response.status, store, router);
+            await redirectError(e.response.status, store, router);
             return {data: e.response.data.data.pop().message, code: e.response.status, success: false};
         }
     }
@@ -115,10 +115,10 @@ export class RestaurantService extends HttpService {
             console.log(e);
             if (!e.response) {
                 console.log(e);
-                redirect("500", store, router);
+                redirectError(500, store, router);
                 return {data: 'Internal server error', code: 500, success: false};
             }
-            redirect(e.response.status, store, router);
+            redirectError(e.response.status, store, router);
             return {data: e.response.data.data.pop().message, code: e.response.status, success: false};
         }
     }

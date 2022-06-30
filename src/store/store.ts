@@ -89,17 +89,17 @@ export const store = createStore({
         },
         removeProduct(state, payload){
             try {
-                if(state.cart.products.find(product => product.id === payload.id)){
-                    if(state.cart.products.find(product => product.id === payload.id)!.quantity > 1) {
+                const cart = state.cart.find(cart => cart.restaurantId === payload.restaurantId);
+                if(cart){
+                    if(cart.products.find(product => product.id === payload.id)!.quantity > 1) {
                         // if it is, increment the quantity
                         // @ts-ignore
-                        state.cart.products.find(product => product.id === payload.id)!.quantity--;
+                        cart.products.find(product => product.id === payload.id)!.quantity--;
                     }else{
                         // @ts-ignore
-                        state.cart.products.splice(state.cart.products.findIndex(product => product.id === payload.id), 1);
+                        cart.products.splice(cart.products.findIndex(product => product.id === payload.id), 1);
                     }
                 }
-                console.log(state.cart.products);
             }catch (e) {
                 console.log(e);
             }

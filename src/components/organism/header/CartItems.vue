@@ -16,7 +16,7 @@
           <v-spacer></v-spacer>
           x {{ item.quantity }}
           <v-list-item-action>
-            <v-btn style="margin: 5px" width="30" height="30" icon color="red" @click="removeProduct(item.id)">
+            <v-btn style="margin: 5px" width="30" height="30" icon color="red" @click="removeProduct(item.id, gg.restaurantId)">
               <v-icon size="20">mdi-delete</v-icon>
             </v-btn>
           </v-list-item-action>
@@ -36,11 +36,13 @@
 
   <div style="display: flex;flex-direction: row">
     <h4 style="display: flex;align-items: flex-end;color:grey;font-weight: lighter">Total: </h4>
-    <h1> {{ true /*cartData.reduce((accumulator, object) => {
-      return accumulator + object.unitPrice * object.quantity;
-    }, 0)*/ }} €</h1>
+    <h1> {{ cartData.reduce((accumulator, object) => {
+      return accumulator + object.products.reduce((e, o) => {
+        return e + o.quantity*o.unitPrice;
+      }, 0);
+    }, 0) }} €</h1>
   </div>
-  <router-link to="/orderInfo">
+  <router-link to="/order/info">
     <a  class="button3">Valider votre panier  <v-icon
         dark
         right
@@ -61,12 +63,15 @@ export default {
     return {cartData : this.$store.state.cart}
   },
   methods: {
-    removeProduct: function (id: Number){
-      this.$store.commit('removeProduct', {id: id})
+    removeProduct: function (id: Number, restaurantId: Number) {
+      this.$store.commit('removeProduct', {id: id, restaurantId: restaurantId})
     }
   },
   created() {
     console.log(this.$store.state.cart);
+  },
+  beforeCreate() {
+
   }
 }
 </script>

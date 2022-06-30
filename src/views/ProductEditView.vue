@@ -4,7 +4,7 @@
      <router-link to="/addProduct">
        <div class="addProductb">
          <div class="topb">
-           <img src="add-icon.svg" alt="Paris" class="centerb">
+           <img src="/add-icon.svg" alt="Paris" class="centerb">
          </div>
          <h1 class="bibo">Ajouter un produit</h1>
        </div>
@@ -15,7 +15,7 @@
      <router-link to="/editProduct">
        <div class="editProductb">
          <div class="topb">
-           <img  src="edit-logo.svg" alt="Paris" class="centerb">
+           <img  src="/edit-logo.svg" alt="Paris" class="centerb">
          </div>
          <div >
            <h1 class="bibo">Editer un produit</h1>

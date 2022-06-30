@@ -1,20 +1,25 @@
 <script lang="ts">
 import categoriesItem from "@/components/categoriesItem.vue";
 import RestauItem from "@/components/molecules/cards/RestauItem.vue";
+import { redirectIfNotAllowed } from "@/services/redirectService";
 import {RestaurantService} from "../services/restaurant.service";
 
 export default {
   components: {RestauItem, categoriesItem},
   mounted: async function() {
     try {
-      const result = await new RestaurantService().get({request: 'getAll'}, this.$store, this.$router);
-      console.log(result);
-      if (result.success){
-        this.restaurants = result.data
-      }else{
-        this.restaurants = []
+      // test if user is allowed to access this page
+      if (await redirectIfNotAllowed(['techServ', 'client', "deliverer"], this.$store, this.$router)) {
+        // get all restaurants
+        const result = await new RestaurantService().get({request: 'getAll'}, this.$store, this.$router);
+        console.log(result);
+        if (result.success){
+          this.restaurants = result.data
+        }else{
+          this.restaurants = []
+        }
+        this.filteredRestaurants = this.restaurants;
       }
-      this.filteredRestaurants = this.restaurants;
     }catch (e) {
       console.log(e);
     }

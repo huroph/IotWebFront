@@ -1,7 +1,7 @@
 import {HttpService} from "@/services/http.service";
 import type {User} from "@/models/user.model";
 import type {Store} from "vuex";
-import {redirect} from "@/services/redirectService";
+import {redirectError} from "@/services/redirectService";
 import type {Router} from "vue-router";
 
 export class EditAccountService extends HttpService {
@@ -21,10 +21,10 @@ export class EditAccountService extends HttpService {
             console.log(e);
             if (!e.response) {
                 console.log(e);
-                redirect("500", store, router);
+                redirectError(500, store, router);
                 return {data: 'Internal server error', code: 500, success: false};
             }
-            redirect(e.response.status, store, router);
+            redirectError(e.response.status, store, router);
             return {data: e.response.data.message, code: e.response.status, success: false};
         }
     }
@@ -37,11 +37,11 @@ export class EditAccountService extends HttpService {
             console.log(e);
             if (!e.response) {
                 console.log(e);
-                redirect("500", store, router);
+                redirectError(500, store, router);
                 return {data: 'Internal server error', code: 500, success: false};
             }
             console.log(e.response);
-            redirect(e.response.status, store, router);
+            redirectError(e.response.status, store, router);
             return {data: e.response.data.data.pop().message, code: e.response.status, success: false};
         }
     }
@@ -53,10 +53,10 @@ export class EditAccountService extends HttpService {
             console.log(e);
             if (!e.response) {
                 console.log(e);
-                redirect("500", store, router);
+                redirectError(500, store, router);
                 return {data: 'Internal server error', code: 500, success: false};
             }
-            redirect(e.response.status, store, router);
+            redirectError(e.response.status, store, router);
             return {data: e.response.data.data.pop().message, code: e.response.status, success: false};
         }
     }

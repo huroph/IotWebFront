@@ -23,9 +23,11 @@
         > <v-icon >mdi-cart</v-icon>
           <v-badge
               color="error"
-              :content="1/*cartData.reduce((accumulator, object) => {
-        return accumulator + object.quantity;
-      }, 0)*/"
+              :content="cartData.reduce((accumulator, object) => {
+        return accumulator + object.products.reduce((e, o) => {
+        return e + o.quantity;
+      }, 0);
+      }, 0)"
           ></v-badge>
         </v-btn>
       </div>
@@ -81,7 +83,7 @@ export default {
     return{
     drawer: false,
     cartDrawer: false,
-    cartData: this.$store.state.cart.products,
+    cartData: this.$store.state.cart,
   }
   },
   computed: mapState({

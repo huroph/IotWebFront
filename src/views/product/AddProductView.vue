@@ -39,7 +39,22 @@ export default {
   name: "AddProductView.vue",
   data() {
     return {
-      name:"Ajouter un produit"
+      name:"Ajouter un produit",
+      ProductName: "TEST",
+      ProductPrice: 12,
+      ProductDesc: "dfguihojhgfdtfyui",
+    }
+  },
+  mounted: async function(){
+    const result = await new RestaurantService().getCategories({}, this.$store, this.$router);
+    console.log(result);
+    if (result.success){
+      this.destination = [new RestaurantCategory({
+        _id: "*",
+        name: "all",
+      })].concat(result.data)
+    }else{
+      this.destination = []
     }
   }
 }
@@ -58,7 +73,7 @@ export default {
 }
 .container{
   width: 100%;
-  background-image: url("../assets/bgUbereat.jpg");
+  background-image: url("../../assets/bgUbereat.jpg");
   background-color: #cccccc;
   height: 100vh;
   background-repeat: no-repeat;

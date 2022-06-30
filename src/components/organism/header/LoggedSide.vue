@@ -20,7 +20,7 @@ export default {
         path: "/restaurant/edit"
       },{
         name: "Modifier les produits",
-        path: "/productEdit"
+        path: "/product/edit"
       },
     ]
     const userLinks = [
@@ -52,13 +52,13 @@ export default {
     const publicLinks = [
       {
         name: "Modifier mon compte",
-        path: "/editAccount"
+        path: "/user/edit"
       },{
         name: "Modifier mon mot de passe",
-        path: "/editPassword"
+        path: "/user/editPwd"
       },{
         name: "Supprimer mon compte",
-        path: "/deleteAccount"
+        path: "/user/delete"
       },{
         name: "Déconnexion",
         path: "/logout"

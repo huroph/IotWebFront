@@ -1,7 +1,7 @@
 import {HttpService} from "@/services/http.service";
 import type {User} from "@/models/user.model";
 import type {Store} from "vuex";
-import {redirect} from "@/services/redirectService";
+import {redirectError} from "@/services/redirectService";
 import type {Router} from "vue-router";
 
 export class LoginService extends HttpService {
@@ -21,10 +21,10 @@ export class LoginService extends HttpService {
         }catch (e: any) {
             if (!e.response) {
                 console.log(e);
-                redirect("500", store, router);
+                redirectError(500, store, router);
                 return {data: 'Internal server error', code: 500, success: false};
             }
-            redirect(e.response.status, store, router);
+            redirectError(e.response.status, store, router);
             return {data: e.response.data.pop().message, code: e.response.status, success: false};
         }
     }
