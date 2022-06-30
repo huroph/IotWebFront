@@ -21,6 +21,12 @@ export default {
       },{
         name: "Modifier les produits",
         path: "/product/list"
+      },{
+        name: "Toutes les commandes",
+        path: "/user/deliverer/orders"
+      },{
+        name: "Toutes les commandes en attente",
+        path: "/user/restaurant/orders/pending"
       },
     ]
     const userLinks = [
@@ -40,7 +46,7 @@ export default {
     const deliverLinks = [
       {
         name: "Mes livraisons",
-        path: "/user/delivery"
+        path: "/user/deliverer/orders"
       }
     ]
     const adminLinks = [

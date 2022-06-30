@@ -1,6 +1,6 @@
 <template>
   <v-slider
-      v-model="slider1"
+      v-model="status"
       :ticks="tickLabels"
       :max="3"
       step="1"
@@ -16,6 +16,12 @@
 <script>
 export default {
   name: "OrderInfoView.vue",
+  props: {
+    status: {
+      type: Number,
+      required: true
+    }
+  },
   data() {
     return {
       slider1: 1,

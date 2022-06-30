@@ -9,6 +9,7 @@
         <div class="col col-2">Nom</div>
         <div class="col col-3">date</div>
         <div class="col col-4">Prix</div>
+        <div class="col col-5"></div>
       </li>
       <li class="table-row"  v-for="item in orders"
           :key="item.name">
@@ -16,6 +17,7 @@
         <div class="col col-2" data-label="Customer Name">{{ item.name }}</div>
         <div class="col col-3" data-label="Amount">{{ item.date }}</div>
         <div class="col col-4" data-label="Payment Status">{{ item.price }}€</div>
+        <div class="col col-5" data-label="Payment Status"><router-link :to="`/order/${item.idOrder}`">Voir le detail</router-link></div>
       </li>
     </ul>
   </div>

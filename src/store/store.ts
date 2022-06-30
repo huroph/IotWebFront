@@ -3,10 +3,12 @@ import {createStore} from 'vuex'
 import {createApp} from "vue";
 import type {Product} from "@/models/product.model";
 import type{ProductCart} from "@/models/productCart.model";
+
 export class cartContent {
     products: ProductCart[];
     restaurantId: Number;
     restaurantName: string;
+
     constructor(json: any) {
         this.products = json.products;
         this.restaurantId = json.restaurantId;
@@ -68,6 +70,7 @@ export const store = createStore({
         },
         addToCart(state, payload: cartContent){
             console.log(payload.restaurantId);
+            console.log(payload.restaurantName);
             try {
                 const cart = state.cart.find(cart => cart.restaurantId === payload.restaurantId);
                 // check if the product is already in the cart
@@ -84,7 +87,7 @@ export const store = createStore({
                     }
                 }else{
                     console.log("cart not found");
-                    state.cart.push(new cartContent({restaurantId: payload.restaurantId, products: payload.products}));
+                    state.cart.push(new cartContent({restaurantId: payload.restaurantId, restaurantName:payload.restaurantName, products: payload.products}));
                 }
             }catch (e) {
                 console.log(e);

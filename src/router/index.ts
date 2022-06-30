@@ -13,10 +13,16 @@ const router = createRouter({
     {path: '/user/editPwd',name: 'editPassword', component: () => import('../views/EditPasswordView.vue')},
     {path: '/user/delete',name: 'deleteAccount', component: () => import('../views/DeleteAccountView.vue')},
     {path: '/user/orderdetails',name: 'orderdetails', component: () => import('../views/OrderDetailView.vue')},
-
+    // user : Restaurater
+    {path: '/user/restaurant/orders',name: 'orderdetails', component: () => import('../views/OrderDetailView.vue')},
+    {path: '/user/restaurant/orders/pending',name: 'orderdetails', component: () => import('../views/OrderDetailView.vue')},
+    // user : deliverer
+    {path: '/user/deliverer/orders',name: 'orderdetails', component: () => import('../views/OrderDetailView.vue')},
+    // user : Restaurater
+    {path: '/user/order/pending',name: 'orderdetails', component: () => import('../views/OrderDetailView.vue')},
     //Order
     {path: '/order/info',name: 'orderInfo', component: () => import('../views/OrderInfoView.vue')},
-    {path: '/order/info/:orderId',name: 'orderInfo', component: () => import('../views/OrderInfoView.vue')},
+    {path: '/order/:orderId',name: 'orderInfo', component: () => import('../views/OrderInfoView.vue')},
     //Products
     {path: '/product/edit/:productId',name: 'productEdit', component: () => import('../views/product/EditProductView.vue')},
     {path: '/product/list',name: 'lop', component: () => import('../views/product/ListOwnProductsView.vue')},
