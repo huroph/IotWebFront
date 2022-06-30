@@ -37,6 +37,7 @@
                     label="Select"
                     persistent-hint
                     return-object
+
                     single-line></v-select>
           <label>Categorie</label>
         </div>
@@ -47,13 +48,9 @@
         <div class="bottom-container">
           <button type="submit" class="btn" :disabled="disabled">submit</button>
         </div>
-
-
       </form>
     </div>
   </div>
-
-
 </template>
 
 <script lang="ts">
@@ -164,6 +161,9 @@ export default {
   justify-content: center;
   margin-top: 20px;
 }
+.v-select ::v-deep{
+  color: #FFFFFF;
+}
 
 .container{
   width: 100%;
@@ -213,6 +213,7 @@ body{
   position:relative;
   margin-bottom:25px;
   width: 300px;
+  color:#fff;
 }
 .input-container label{
   position:absolute;
