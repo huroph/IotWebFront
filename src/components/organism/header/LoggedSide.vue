@@ -23,7 +23,7 @@ export default {
         path: "/product/list"
       },{
         name: "Toutes les commandes",
-        path: "/user/deliverer/orders"
+        path: "/user/restaurant/orders"
       },{
         name: "Toutes les commandes en attente",
         path: "/user/restaurant/orders/pending"
@@ -40,19 +40,25 @@ export default {
       },
       {
         name: "Mes commandes",
-        path: "/user/orderdetails"
+        path: "/user/order/list"
       }
     ]
     const deliverLinks = [
       {
-        name: "Mes livraisons",
+        name: "Les livraison a prendre en charge",
         path: "/user/deliverer/orders"
+      },{
+        name: "Mes livraisons a effectuer",
+        path: "/user/deliverer/orders/inDelivery"
       }
     ]
     const adminLinks = [
       {
         name: "Liste des restaurants",
         path: "/restaurant/list"
+      },{
+        name: "Liste des livreurs",
+        path: "/deliverers/list"
       }
     ]
     const publicLinks = [

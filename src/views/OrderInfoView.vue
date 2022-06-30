@@ -36,6 +36,7 @@
 
 <script lang="ts">
 import slider from "../components/molecules/slider.vue";
+import {OrderService} from "@/services/order.service";
 export default {
   name: "OrderInfoView",
   components: {
@@ -87,8 +88,14 @@ export default {
   methods: {
 
   },
-  beforeCreate() {
+  mounted: async function loadData(){
+    const result = await new OrderService().get({request: 'getOne'}, this.$store, this.$router);
+    if (result.success){
+      this.orders = result.data
 
+    }else{
+      this.order = []
+    }
   }
 }
 </script>

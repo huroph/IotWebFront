@@ -2,7 +2,8 @@
 
 
   <div class="container">
-    <h2>Toutes vos commande</h2>
+    <h2>Les commande en attentes de récupération</h2>
+    <v-btn @click="takeCourse" variant="outlined">Prendre la course</v-btn>
     <EasyDataTable
         v-model:items-selected="itemsSelected"
         :headers="headers"
@@ -41,8 +42,38 @@ export default {
       itemsSelected: ref([])
     }
   },
+  methods: {
+    async takeCourse() {
+      if (this.itemsSelected.length == 1) {
+        console.log(this.itemsSelected[0]);
+        const r = await new OrderService().incrementStatus({
+          _id: this.itemsSelected[0]._id,
+        }, this.$store, this.$router);
+        this.$swal({
+          icon: r.success ? "success" : "error",
+          text: r.data
+        });
+        if(r.success){
+          const result = await new OrderService().get({request: 'getAllDelivererInProgress'}, this.$store, this.$router);
+          if (result.success){
+            this.restaurants = result.data
+
+          }else{
+            this.restaurants = []
+          }
+        }
+      }else{
+        this.$swal({
+          title: "Erreur",
+          icon:"error",
+          text: "Veuillez selectionner un restaurant"
+        })
+      }
+    },
+
+  },
   mounted: async function loadData(){
-    const result = await new OrderService().get({request: 'getAllRestaurant'}, this.$store, this.$router);
+    const result = await new OrderService().get({request: 'getAllDelivererInProgress'}, this.$store, this.$router);
     if (result.success){
       this.restaurants = result.data
 

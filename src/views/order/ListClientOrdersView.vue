@@ -2,7 +2,7 @@
 
 
   <div class="container">
-    <h2>Toutes vos commande</h2>
+    <h2>Vos commandes</h2>
     <EasyDataTable
         v-model:items-selected="itemsSelected"
         :headers="headers"
@@ -42,7 +42,7 @@ export default {
     }
   },
   mounted: async function loadData(){
-    const result = await new OrderService().get({request: 'getAllRestaurant'}, this.$store, this.$router);
+    const result = await new OrderService().get({request: 'getAllHis'}, this.$store, this.$router);
     if (result.success){
       this.restaurants = result.data
 
