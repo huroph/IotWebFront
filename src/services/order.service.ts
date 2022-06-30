@@ -4,7 +4,7 @@ import type {Router} from "vue-router";
 import type {Restaurant} from "@/models/restaurant.model";
 import {redirectError} from "@/services/redirectService";
 import type {Product} from "@/models/product.model";
-import {Order} from "@/models/order.model";
+import type {Order} from "@/models/order.model";
 
 export class OrderService extends HttpService{
     constructor() {

@@ -5,8 +5,8 @@ import type {Restaurant} from "@/models/restaurant.model";
 import {redirectError} from "@/services/redirectService";
 import type {Product} from "@/models/product.model";
 import {Order} from "@/models/order.model";
-import {Deliverer} from "@/models/deliverer.model";
-import {User} from "@/models/user.model";
+import type {Deliverer} from "@/models/deliverer.model";
+import type {User} from "@/models/user.model";
 
 export class DelivererService extends HttpService{
     constructor() {
