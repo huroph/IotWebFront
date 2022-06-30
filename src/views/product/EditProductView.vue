@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div class="box">
-      <form @submit="createProduct">
+      <form @submit="editProduct">
         <span class="text-center">{{title}}</span>
         <div class="input-container">
           <input type="text" required="" name="email" v-model="name"/>
@@ -42,47 +42,59 @@ export default {
   name: "AddProductView.vue",
   data() {
     return {
-      title:"Ajouter un produit",
-      name: "TEST",
-      price: 12,
-      desc: "dfguihojhgfdtfyui",
+      productId: this.$route.params.productId,
+      title:"Modifier un produit",
+      name: "Loading...",
+      price: 0,
+      desc: "",
     }
   },
   methods: {
-    async createProduct(e) {
+    async editProduct(e) {
       e.preventDefault();
       const th = this;
-      if (this.img){
-        let payload = {
-          name: this.name,
-          desc: this.desc,
-          price: this.price,
-        };
+      let payload = {
+        _id: this.productId,
+        name: this.name,
+        desc: this.desc,
+        price: this.price,
+      };
+      if (this.img) {
         var reader = new FileReader();
         // Use the javascript reader object to load the contents
         // of the file in the v-model prop
         reader.readAsDataURL(this.img[0])
         reader.onload = async function () {
           payload["img"] = reader.result;
-          const response = await new ProductService().createProduct(payload, th.$store, th.$router);
+          const response = await new ProductService().editProduct(payload, th.$store, th.$router);
           th.$swal({
             icon: response.success ? "success" : "error",
             text: response.data
           });
-          if (response.success){
+          if (response.success) {
             await th.$router.push("/product/list")
           }
         }
-      }else {
-        this.$swal({
-          title: 'Erreur',
-          text: 'Veuillez choisir une image',
-          icon: 'error',
-          confirmButtonText: 'Ok'
-        })
+      }else{
+        const response = await new ProductService().editProduct(payload, th.$store, th.$router);
+        th.$swal({
+          icon: response.success ? "success" : "error",
+          text: response.data
+        });
+        if (response.success){
+          await th.$router.push("/product/list")
+        }
       }
-
     },
+  },
+  mounted: async function () {
+    const response = await new ProductService().get({request: "getOne", _id: this.productId}, this.$store, this.$router);
+    console.log(response);
+    if (response.success){
+      this.name = response.data.name;
+      this.price = response.data.price;
+      this.desc = response.data.desc;
+    }
   }
 }
 </script>

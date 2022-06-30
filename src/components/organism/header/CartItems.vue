@@ -3,7 +3,7 @@
     <v-list-item-group v-model="group" active-class="deep-purple--text text--accent-4" v-for="gg in cartData">
       <v-list-item >
         <v-list-item-title>
-          VOTRE PANIER {{gg.restaurantId}}
+          VOTRE PANIER {{gg.restaurantName}}
         </v-list-item-title>
       </v-list-item>
       <div v-for="item in gg.products">
@@ -11,10 +11,10 @@
           <v-img class="img" :src="item.src" >
           </v-img>
           <v-list-item-title>
-            {{ item.name }}
+            {{ item.name }} : <v-badge color="info" :content="`${item.unitPrice } € x ${ item.quantity }`"> </v-badge>
           </v-list-item-title>
           <v-spacer></v-spacer>
-          x {{ item.quantity }}
+          {{ item.quantity * item.unitPrice }} €
           <v-list-item-action>
             <v-btn style="margin: 5px" width="30" height="30" icon color="red" @click="removeProduct(item.id, gg.restaurantId)">
               <v-icon size="20">mdi-delete</v-icon>

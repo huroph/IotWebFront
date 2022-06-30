@@ -1,12 +1,11 @@
 import {HttpService} from "@/services/http.service";
-import type {User} from "@/models/user.model";
 import type {Store} from "vuex";
-import {redirectError} from "@/services/redirectService";
 import type {Router} from "vue-router";
 import type {Restaurant} from "@/models/restaurant.model";
+import {redirectError} from "@/services/redirectService";
+import type {Product} from "@/models/product.model";
 
-export class RestaurantService extends HttpService {
-
+export class ProductService extends HttpService{
     constructor() {
         super();
     }
@@ -16,13 +15,13 @@ export class RestaurantService extends HttpService {
             let result;
             switch (payload.request) {
                 case "getAll":
-                    result = await this.http.post<{ data: Restaurant[] }>('transaction/GRS', payload);
+                    result = await this.http.post<{ data: Product[] }>('transaction/GIS', payload);
                     break
                 case "getOne":
-                    result = await this.http.post<{ data: Restaurant[] }>('transaction/GR', payload);
+                    result = await this.http.post<{ data: Product[] }>('transaction/GI', payload);
                     break
-                case "getHis":
-                    result = await this.http.post<{ data: Restaurant[] }>('transaction/GMR', payload);
+                case "getAllHis":
+                    result = await this.http.post<{ data: Product[] }>('transaction/GMIS', payload);
                     break
                 default:
                     result = {data:{data:[]}};
@@ -39,27 +38,11 @@ export class RestaurantService extends HttpService {
             return {data: e.response.data.data.pop().message, code: e.response.status, success: false};
         }
     }
-    async getCategories(payload: any, store: Store<any>, router: Router) {
+    async deleteProduct(payload: any, store: Store<any>, router: Router) {
         try{
-            let result = await this.http.post<{ data: any[] }>('transaction/GRC', payload);
-            return {data: result.data.data, code: 200, success: true};
-        }catch (e: any) {
-            console.log(e);
-            if (!e.response) {
-                console.log(e);
-                await redirectError(500, store, router);
-                return {data: 'Internal server error', code: 500, success: false};
-            }
-            await redirectError(e.response.status, store, router);
-            return {data: e.response.data.data.pop().message, code: e.response.status, success: false};
-        }
-    }
-
-    async acceptPendingRestaurant(payload: any, store: Store<any>, router: Router) {
-        try{
-            const result = await this.http.post<{ data: User }>('transaction/CUR', payload);
+            const result = await this.http.post<any>('transaction/DI', payload);
             // store new data into store object
-            return {data: "Le statut du restaurant a été modifié !", code: 200, success: true};
+            return {data: "Le produit a été supprimé", code: 200, success: true};
         }catch (e: any) {
             console.log(e);
             if (!e.response) {
@@ -72,11 +55,11 @@ export class RestaurantService extends HttpService {
             return {data: e.response.data.data.pop().message, code: e.response.status, success: false};
         }
     }
-    async createRestaurant(payload: any, store: Store<any>, router: Router) {
+    async createProduct(payload: any, store: Store<any>, router: Router) {
         try{
-            const result = await this.http.post<{ data: Restaurant }>('transaction/CR', payload);
+            const result = await this.http.post<{ data: Product }>('transaction/CI', payload);
             // store new data into store object
-            return {data: "Le restaurant a été créé, il sera soumis à une vérification par nos équipes.", code: 200, success: true};
+            return {data: "Le produit a été créé.", code: 200, success: true};
         }catch (e: any) {
             console.log(e);
             if (!e.response) {
@@ -89,11 +72,11 @@ export class RestaurantService extends HttpService {
             return {data: e.response.data.data.pop().message, code: e.response.status, success: false};
         }
     }
-    async editRestaurant(payload: any, store: Store<any>, router: Router) {
+    async editProduct(payload: any, store: Store<any>, router: Router) {
         try{
-            const result = await this.http.post<{ data: Restaurant }>('transaction/UR', payload);
+            const result = await this.http.post<{ data: Restaurant }>('transaction/UI', payload);
             // store new data into store object
-            return {data: "Le restaurant a été modifié.", code: 200, success: true};
+            return {data: "Le produit a mis a jour.", code: 200, success: true};
         }catch (e: any) {
             console.log(e);
             if (!e.response) {
@@ -103,22 +86,6 @@ export class RestaurantService extends HttpService {
             }
             console.log(e.response);
             await redirectError(e.response.status, store, router);
-            return {data: e.response.data.data.pop().message, code: e.response.status, success: false};
-        }
-    }
-
-    async deleteUser(store: Store<any>, router: Router) {
-        try {
-            await this.http.post<{ data: User }>('transaction/DU', {});
-            return {data: "Compte supprimé !", code: 200, success: true};
-        } catch (e: any) {
-            console.log(e);
-            if (!e.response) {
-                console.log(e);
-                redirectError(500, store, router);
-                return {data: 'Internal server error', code: 500, success: false};
-            }
-            redirectError(e.response.status, store, router);
             return {data: e.response.data.data.pop().message, code: e.response.status, success: false};
         }
     }

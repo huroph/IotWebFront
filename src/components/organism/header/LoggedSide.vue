@@ -20,7 +20,7 @@ export default {
         path: "/restaurant/edit"
       },{
         name: "Modifier les produits",
-        path: "/product/edit"
+        path: "/product/list"
       },
     ]
     const userLinks = [

@@ -18,13 +18,13 @@ const router = createRouter({
     {path: '/order/info',name: 'orderInfo', component: () => import('../views/OrderInfoView.vue')},
     {path: '/order/info/:orderId',name: 'orderInfo', component: () => import('../views/OrderInfoView.vue')},
     //Products
-    {path: '/product/edit',name: 'productEdit', component: () => import('../views/ProductEditView.vue')},
+    {path: '/product/edit/:productId',name: 'productEdit', component: () => import('../views/product/EditProductView.vue')},
     {path: '/product/list',name: 'lop', component: () => import('../views/product/ListOwnProductsView.vue')},
     {path: '/product/add',name: 'addproduct', component: () => import('../views/product/AddProductView.vue')},
     // RESTAURANTS
     {path: '/restaurants', name: 'restaurantsView', component: () => import('../views/RestaurantsView.vue')},
     {path: '/restaurants/:categoryId', name:'RestauBycategoryId', component: () => import('@/views/RestaurantsView.vue') },
-    {path: '/menu/:restauId', name:'menuByRestauId', component: () => import('@/views/ItemView.vue') },
+    {path: '/menu/:restauId', name:'menuByRestauId', component: () => import('@/views/restaurant/MenuView.vue') },
     {path: '/restaurant/list',name: 'rl', component: () => import('../views/ListRestaurantView.vue')},
     {path: '/restaurant/edit',name: 're', component: () => import('../views/EditRestaurantView.vue')},
     {path: '/restaurant/create',name: 'createRestaurant', component: () => import('../views/CreateRestaurantView.vue')},

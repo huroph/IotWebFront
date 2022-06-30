@@ -3,11 +3,11 @@
     <div class="img-header">
     </div>
     <div class="title">
-      <h1 style="font-weight: bold">{{ destination.name }}</h1>
+      <h1 style="font-weight: bold">{{ restaurantData.name }}</h1>
       <h3 style="font-weight:normal!important;">Menu</h3>
     </div>
     <div class="grid-container">
-      <ProductItem :cards="cardsData" :restaurant-id="destinationId"/>
+      <ProductItem :cards="products" :restaurant-id="restaurantId" :restaurant-name="restaurantData.name"/>
     </div>
   </div>
 </template>
@@ -26,7 +26,7 @@
 }
 
 .img-header {
-  background-image: url("../assets/McdoBG.jpeg");
+  background-image: url("../../assets/McdoBG.jpeg");
   width: 100%;
   height: 134px;
   background-size: cover;
@@ -44,29 +44,43 @@
 </style>
 <script lang="ts">
 
-import ProductItem from "../components/molecules/cards/productItem.vue";
-import MenueItems from "../components/molecules/cards/MenueItems.vue";
-import sourceData from "@/data.json"
+import ProductItem from "../../components/molecules/cards/productCardItem.vue";
+import MenueItems from "../../components/molecules/cards/MenueItems.vue";
+import {redirectIfNotAllowed} from "@/services/redirectService";
+import {RestaurantService} from "@/services/restaurant.service";
+import { ProductService } from "@/services/product.service";
+import { Restaurant } from "@/models/restaurant.model";
 
 export default {
   components: {ProductItem},
   computed: {
-    destinationId() {
-      return parseInt(this.$route.params.restauId)
-    },
-    destination() {
-      return sourceData['restaurants'].find(destination => destination.id === this.destinationId);
-    },
-    cardsData() {
-      const cardData = [];
-      this.cards.forEach((card) => {
-        if (card.restauId === this.destinationId) cardData.push(card);
-      });
-      return cardData
+
+  },
+  mounted: async function() {
+    if (await redirectIfNotAllowed(['techServ', 'client', "deliverer"], this.$store, this.$router)) {
+      // get all restaurants
+      let result = await new RestaurantService().get({request: 'getOne', _id:this.restaurantId}, this.$store, this.$router);
+      console.log(result);
+      if (result.success){
+        this.restaurantData = result.data;
+      }else{
+        this.restaurants = []
+      }
+      // get all products for this restaurant
+      result = await new ProductService().get({request: 'getAll', _id:this.restaurantId}, this.$store, this.$router);
+      console.log(result);
+      if (result.success){
+        this.products = result.data
+      }else{
+        this.products = []
+      }
     }
   },
   data() {
     return {
+      restaurantId: (this.$route.params.restauId),
+      restaurantData: new Restaurant({_id: this.restaurantId, name: "NAME"}),
+      products: [],
       cards: [
         {
           restauId: 1,

@@ -2,12 +2,15 @@ import App from '../App.vue'
 import {createStore} from 'vuex'
 import {createApp} from "vue";
 import type {Product} from "@/models/product.model";
+import type{ProductCart} from "@/models/productCart.model";
 export class cartContent {
-    products: Product[];
+    products: ProductCart[];
     restaurantId: Number;
+    restaurantName: string;
     constructor(json: any) {
         this.products = json.products;
         this.restaurantId = json.restaurantId;
+        this.restaurantName = json.restaurantName;
     }
 }
 export const store = createStore({

@@ -26,7 +26,7 @@
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 //
 // declare global {
-//   namespace Cypress {
+//   500, storespace Cypress {
 //     interface Chainable {
 //       login(email: string, password: string): Chainable<void>
 //       drag(subject: string, options?: Partial<TypeOptions>): Chainable<Element>

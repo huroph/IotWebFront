@@ -1,14 +1,14 @@
 <template>
 
   <div class="containers">
-    <v-row v-for="card in cards" :key="card.title" :cols="card.cols" :x-id="card.id">
+    <v-row v-for="card in cards" :key="card.name" :cols="card.cols" :x-id="card._id">
       <v-card class=" productCard">
-        <v-img :src="card.src"   style="position: relative" >
-          <v-btn class="close" @click="addToCart(card.id, card.price, card.title, card.src, $event)"><p style="color: white">+</p></v-btn>
+        <v-img :src="card.img"   style="position: relative" >
+          <v-btn class="close" @click="addToCart(card._id, card.price, card.name, card.img, $event)"><p style="color: white">+</p></v-btn>
         </v-img>
-        <v-card-title h5 class="title">{{card.title}}
+        <v-card-title h5 class="title">{{card.name}}
         </v-card-title>
-        <v-card-subtitle class="title" style="margin-bottom: 5px" >{{card.price}}</v-card-subtitle>
+        <v-card-subtitle class="title" style="margin-bottom: 5px" >{{card.price}} €</v-card-subtitle>
       </v-card>
     </v-row>
   </div>
@@ -63,6 +63,7 @@
 
 <script lang="ts">
 import {Product} from "@/models/product.model";
+import { ProductCart } from "@/models/productCart.model";
 import {cartContent} from "@/store/store";
 
 export default {
@@ -70,7 +71,11 @@ export default {
   props:{
     cards: [],
     restaurantId: {
-      type: Number,
+      type: String,
+      required: true
+    },
+    restaurantName: {
+      type: String,
       required: true
     }
   },
@@ -78,8 +83,10 @@ export default {
     addToCart(id: Number, unitPrice: Number, name: String, src:String, e: any){
       console.log(id);
       console.log(this.restaurantId);
+      console.log(this.restaurantName);
+      console.log(unitPrice);
       //this.$store.commit('emptyCart')
-      this.$store.commit("addToCart", new cartContent({restaurantId: this.restaurantId, products:[new Product({id: id, unitPrice: unitPrice, name: name, src:src})]}) );
+      this.$store.commit("addToCart", new cartContent({restaurantId: this.restaurantId, restaurantName:this.restaurantName, products:[new ProductCart({id: id, unitPrice: unitPrice, name: name, src:src})]}) );
 
     },
   },
