@@ -144,12 +144,8 @@ export default {
 </script>
 
 <style scoped>
-.v-field__field, .v-field__prepend-inner, .v-field__append-inner, .v-field__clearable{
 
-}
-.v-select::v-deep{
-  color: #FFFFFF!important;
-}
+
 .v-select__selection-text span::v-deep{
   color: #FFFFFF!important;
 }
@@ -174,16 +170,7 @@ label{
 
   margin-top: 20px;
 }
-.container{
-  position: fixed;
-  top: 0;
-  left: 0;
 
-  /* Preserve aspet ratio */
-  min-width: 120%;
-  min-height: 120%;
-
-}
 img.bg {
   /* Set rules to fill background */
   min-height: 100%;
